@@ -18,6 +18,12 @@
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-dao</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-service</file>
         </fileset>
+        <fileset id="fileset2" name="ApplicationContext Shiro" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-shiro.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-dao.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-service.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-tx.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
@@ -36,10 +42,25 @@
     <orderEntry type="module" module-name="blog_manager_service" />
     <orderEntry type="module" module-name="blog_manager_dao" />
     <orderEntry type="module" module-name="blog_manager_pojo" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-lang:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-cache:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-hash:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-core:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-crypto-cipher:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-core:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-config-ogdl:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-ehcache:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache-core:2.6.11" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.8" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.miemiedev:mybatis-paginator:1.2.15" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.4" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:3.7.5" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.32" level="project" />

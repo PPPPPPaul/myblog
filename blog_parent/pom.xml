@@ -40,9 +40,17 @@
         <zookeeper.version>3.4.7</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
         <rapid.version>4.0.5</rapid.version>
+        <shiro.version>1.4.0</shiro.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
     </properties>
     <dependencyManagement>
         <dependencies>
+            <!--验证码生成工具-->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
             <!--  时间操作组件  -->
             <dependency>
                 <groupId>joda-time</groupId>
@@ -100,10 +108,36 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!--shiro核心类库-->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-ehcache</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
             <!--  日志处理  -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
             <!--  Mybatis  -->

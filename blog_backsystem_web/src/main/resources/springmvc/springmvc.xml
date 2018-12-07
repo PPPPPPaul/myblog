@@ -22,6 +22,13 @@
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--配置登陆限制拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.lk.interceptor.loginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
  <!--   <dubbo:application name="shop-item-portal"/>
     <dubbo:registry protocol="zookeeper" address="192.168.255.129:2181"/>
     <dubbo:reference interface="com.lk.service.ItemCatService" id="itemCatService"/>
