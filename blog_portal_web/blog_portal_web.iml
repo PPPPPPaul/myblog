@@ -27,5 +27,10 @@
     <orderEntry type="module" module-name="blog_manager_service" />
     <orderEntry type="module" module-name="blog_manager_dao" />
     <orderEntry type="module" module-name="blog_manager_pojo" />
+    <orderEntry type="module" module-name="blog_common" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.2" level="project" />
   </component>
 </module>

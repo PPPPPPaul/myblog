@@ -78,11 +78,11 @@
     <form name="loginForm" id="loginForm"  method="post">
         <p>
             <label for="user_login">用户名或电子邮件地址<br />
-                <input type="text" name="username" id="user_login" class="input" value="<%=username%>" size="20" required/></label>
+                <input type="text" name="userName" id="user_login" class="input" value="<%=username%>" size="20" required/></label>
         </p>
         <p>
             <label for="user_pass">密码<br />
-                <input type="password" name="password" id="user_pass" class="input" value="<%=password%>" size="20" required/>
+                <input type="password" name="userPass" id="user_pass" class="input" value="<%=password%>" size="20" required/>
             </label>
         </p>
         <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="1" checked /> 记住密码</label></p>
@@ -135,11 +135,10 @@
                 data: $("#loginForm").serialize(),
                 dataType: "json",
                 success: function (data) {
-                    if(data.code==0) {
+                    if(data.status==500) {
                         alert(data.msg);
                     } else {
                         window.location.href="/admin";
-
                     }
                 },
                 error: function () {
