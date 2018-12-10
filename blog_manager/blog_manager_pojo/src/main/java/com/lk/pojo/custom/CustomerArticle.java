@@ -1,37 +1,29 @@
 package com.lk.pojo.custom;
 
 import com.lk.pojo.Article;
+import com.lk.pojo.Category;
 import com.lk.pojo.Tag;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class CustomerArticle extends Article implements Serializable {
-    private String category_parent_name;
-    private String category_child_name;
-    private List<Tag> tags;
+    private List<Category> categoryCustomList;
+    private List<Tag> tagCustomList;
 
-    public String getCategory_parent_name() {
-        return category_parent_name;
+    public List<Category> getCategoryCustomList() {
+        return categoryCustomList;
     }
 
-    public void setCategory_parent_name(String category_parent_name) {
-        this.category_parent_name = category_parent_name;
+    public void setCategoryCustomList(List<Category> categoryCustomList) {
+        this.categoryCustomList = categoryCustomList;
     }
 
-    public String getCategory_child_name() {
-        return category_child_name;
+    public List<Tag> getTagCustomList() {
+        return tagCustomList;
     }
 
-    public void setCategory_child_name(String category_child_name) {
-        this.category_child_name = category_child_name;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void setTagCustomList(List<Tag> tagCustomList) {
+        this.tagCustomList = tagCustomList;
     }
 }

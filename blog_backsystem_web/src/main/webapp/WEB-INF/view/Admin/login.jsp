@@ -87,7 +87,7 @@
         </p>
         <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="1" checked /> 记住密码</label></p>
         <p class="submit">
-            <input type="button" name="wp-submit" id="submit-btn" class="button button-primary button-large" value="登录" />
+            <input type="button" name="wp-submit" id="submit-btn" class="button button-primary button-large" value="登录"/>
         </p>
     </form>
 

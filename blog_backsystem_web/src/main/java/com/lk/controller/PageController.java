@@ -18,10 +18,6 @@ public class PageController {
     public String toLogin(){
         return "/Admin/login";
     }
-    @RequestMapping("/admin/article/{page}")
-    public String toArticle(@PathVariable String page){
-        return "/Admin/Article/"+page;
-    }
     @RequestMapping("/admin/category")
     public String toCategoryIndex(){
         return "/Admin/Article/index";
