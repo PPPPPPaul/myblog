@@ -42,7 +42,9 @@
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <form id="articleForm" method="post">
+                <form id="articleForm" action="/admin/article" method="post">
+                    <input id="pageNum" value="" hidden>
+                    <input id="pageSize" value="" hidden>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <input type="text" name="query" placeholder="请输入关键词" autocomplete="off" class="layui-input">
@@ -285,9 +287,9 @@
                 limits:[10,20,30,40,50],
                 layout:['prev', 'page','limit','next'],
                 jump: function(obj, first){//这个方法是在你选择页数后触发执行，在这里完成当你点击页码后需要向服务请求数据的操
-                    $('#articleForm').submit(function(){
-                        url:'/admin/article'+'?pageNum='+obj.curr+"&pageSize="+obj.limit
-                    });
+                    $('#pageNum').val(obj.curr);
+                    $('#pageSize').val(obj.limit);
+                    $('#articleForm').submit();
                 }
             })
         })
