@@ -24,4 +24,15 @@
         where
           user_name=#{user_name}
     </select>
+    <select id="selectUserById" parameterType="int" resultMap="userResult">
+        select
+        <include refid="Base_Column"></include>
+        from user
+        where user_id=#{uid}
+    </select>
+    <select id="selectUserList" resultMap="userResult">
+        select
+        <include refid="Base_Column"></include>
+        from user
+    </select>
 </mapper>

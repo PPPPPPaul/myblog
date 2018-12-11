@@ -22,6 +22,7 @@ public class LoginController {
         User dbuser = (User) result.getData();
         HttpSession session = request.getSession();
         session.setAttribute("username",dbuser.getUserName());
+        session.setAttribute("loginUser",dbuser);
         return result;
     }
 }

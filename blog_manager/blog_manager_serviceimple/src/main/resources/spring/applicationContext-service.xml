@@ -12,4 +12,5 @@
     <dubbo:service interface="com.lk.service.ArticleService" ref="articleServiceImpl" timeout="60000"/>
     <dubbo:service interface="com.lk.service.CategoryService" ref="categoryServiceImpl" timeout="60000"/>
     <dubbo:service interface="com.lk.service.TagService" ref="tagServiceImpl" timeout="60000"/>
+    <dubbo:service interface="com.lk.service.UserService" ref="userServiceImpl" timeout="60000"/>
 </beans>

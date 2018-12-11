@@ -35,5 +35,6 @@
     <dubbo:reference interface="com.lk.service.ArticleService" id="articleService"/>
     <dubbo:reference interface="com.lk.service.TagService" id="tagService"/>
     <dubbo:reference interface="com.lk.service.CategoryService" id="categoryService"/>
+    <dubbo:reference interface="com.lk.service.UserService" id="userService"/>
 
 </beans>
