@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+target
+out
+gen
+/blog_manager/blog_manager_service/blog_manager_service.iml
+/blog_backsystem_web/blog_backsystem_web.iml
+/blog_common/blog_common.iml
+/blog_manager/blog_manager_dao/blog_manager_dao.iml
+/blog_manager/blog_manager_pojo/blog_manager_pojo.iml
+/blog_manager/blog_manager.iml
+/blog_parent/blog_parent.iml
+/blog_portal_web/blog_portal_web.iml
