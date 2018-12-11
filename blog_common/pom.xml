@@ -12,6 +12,10 @@
 
     <artifactId>blog_common</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
         <!--  JacksonJson处理工具包  -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -27,6 +31,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>fastdfs_client</groupId>
+            <artifactId>fastdfs_client</artifactId>
+            <version>${fastdfs-client-java.version}</version>
         </dependency>
     </dependencies>
 </project>
