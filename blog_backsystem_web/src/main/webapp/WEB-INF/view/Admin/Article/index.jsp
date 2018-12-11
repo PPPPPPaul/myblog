@@ -7,12 +7,6 @@
 <rapid:override name="title">
     - 文章列表
 </rapid:override>
-<rapid:override name="header-script">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/plugin/layui/layui.all.js"></script>
-    <script>
-    </script>
-</rapid:override>
 <rapid:override name="header-style">
     <style>
         /*覆盖 layui*/
@@ -43,15 +37,13 @@
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <form id="articleForm" action="/admin/article" method="post">
-                    <input id="pageNum" value="" hidden>
-                    <input id="pageSize" value="" hidden>
+                    <input id="pageNum" name="pageNum" value="" hidden>
+                    <input id="pageSize" name="pageSize" value="" hidden>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <input type="text" name="query" placeholder="请输入关键词" autocomplete="off" class="layui-input">
                             <button class="layui-btn" lay-filter="formDemo" onclick="queryArticle()">搜索</button>
-                            <button class="layui-btn" lay-filter="formDemo" style="float: right;"
-                                    onclick="confirmDeleteArticleBatch()">批量删除
-                            </button>
+                            <button class="layui-btn" lay-filter="formDemo" type="button" style="float: right" onclick="batchdelete()">批量删除</button>
                         </div>
                     </div>
                     <input type="hidden" name="currentUrl" id="currentUrl" value="">
@@ -122,91 +114,7 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <div id="tablecontent"></div>
                 </form>
-
-                <%--<c:if test="${pageinfo.list.size()!=0}">
-                    &lt;%&ndash;分页 start&ndash;%&gt;
-                    <nav class="navigation pagination" role="navigation">
-                        <div class="nav-links">
-                            <c:choose>
-                                <c:when test="${pageinfo.totalPageCount <= 3 }">
-                                    <c:set var="begin" value="1"/>
-                                    <c:set var="end" value="${publishedArticleListVoList[0].page.totalPageCount }"/>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:set var="begin" value="${publishedArticleListVoList[0].page.pageNow-1 }"/>
-                                    <c:set var="end" value="${publishedArticleListVoList[0].page.pageNow + 2}"/>
-                                    <c:if test="${begin < 2 }">
-                                        <c:set var="begin" value="1"/>
-                                        <c:set var="end" value="3"/>
-                                    </c:if>
-                                    <c:if test="${end > publishedArticleListVoList[0].page.totalPageCount }">
-                                        <c:set var="begin"
-                                               value="${publishedArticleListVoList[0].page.totalPageCount-2 }"/>
-                                        <c:set var="end" value="${publishedArticleListVoList[0].page.totalPageCount }"/>
-                                    </c:if>
-                                </c:otherwise>
-                            </c:choose>
-                                &lt;%&ndash;上一页 &ndash;%&gt;
-                            <c:choose>
-                                <c:when test="${publishedArticleListVoList[0].page.pageNow eq 1 }">
-                                    &lt;%&ndash;当前页为第一页，隐藏上一页按钮&ndash;%&gt;
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="page-numbers"
-                                       href="/admin/article/p/${publishedArticleListVoList[0].page.pageNow-1}">
-                                        <i class="layui-icon">&#xe603;</i>
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
-                                &lt;%&ndash;显示第一页的页码&ndash;%&gt;
-                            <c:if test="${begin >= 2 }">
-                                <a class="page-numbers" href="/admin/article/p/1">1</a>
-                            </c:if>
-                                &lt;%&ndash;显示点点点&ndash;%&gt;
-                            <c:if test="${begin  > 2 }">
-                                <span class="page-numbers dots">…</span>
-                            </c:if>
-                                &lt;%&ndash;打印 页码&ndash;%&gt;
-                            <c:forEach begin="${begin }" end="${end }" var="i">
-                                <c:choose>
-                                    <c:when test="${i eq publishedArticleListVoList[0].page.pageNow }">
-                                        <a class="page-numbers current">${i}</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a class="page-numbers"
-                                           href="/admin/article/p/${i}">${i}</a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                                &lt;%&ndash; 显示点点点 &ndash;%&gt;
-                            <c:if test="${end < publishedArticleListVoList[0].page.totalPageCount-1 }">
-                                <span class="page-numbers dots">…</span>
-                            </c:if>
-                                &lt;%&ndash; 显示最后一页的数字 &ndash;%&gt;
-                            <c:if test="${end < publishedArticleListVoList[0].page.totalPageCount }">
-                                <a href="/admin/article/p/${publishedArticleListVoList[0].page.totalPageCount}">
-                                        ${publishedArticleListVoList[0].page.totalPageCount}
-                                </a>
-                            </c:if>
-                                &lt;%&ndash;下一页 &ndash;%&gt;
-                            <c:choose>
-                                <c:when test="${publishedArticleListVoList[0].page.pageNow eq publishedArticleListVoList[0].page.totalPageCount }">
-                                    &lt;%&ndash;到了尾页隐藏，下一页按钮&ndash;%&gt;
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="page-numbers"
-                                       href="/admin/article/p/${publishedArticleListVoList[0].page.pageNow+1}">
-                                        <i class="layui-icon">&#xe602;</i>
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
-
-                        </div>
-                    </nav>
-                    &lt;%&ndash;分页 end&ndash;%&gt;
-                </c:if>--%>
             </div>
                 <%--           <div class="layui-tab-item">
                                <table class="layui-table">
@@ -271,12 +179,13 @@
                            </div>--%>
         </div>
     </div>
-
+    <div id="tablecontent"></div>
 
 </rapid:override>
 <rapid:override name="footer-script">
+    <%--前台laypage和后台pageHelper分页--%>
     <script>
-        var ROOT_PATH=getRootPath();
+        var url;
         layui.use("laypage",function(){
             var laypage = layui.laypage;
             laypage.render({
@@ -284,31 +193,56 @@
                 count:${pageinfo.total},
                 curr:${pageinfo.pageNum},
                 limit:${pageinfo.pageSize},
-                limits:[10,20,30,40,50],
+                limits:[5,10,20,30,40,50],
                 layout:['prev', 'page','limit','next'],
-                jump: function(obj, first){//这个方法是在你选择页数后触发执行，在这里完成当你点击页码后需要向服务请求数据的操
-                    $('#pageNum').val(obj.curr);
-                    $('#pageSize').val(obj.limit);
-                    $('#articleForm').submit();
+                jump: function(obj, first){
+                        $('#pageNum').val(obj.curr);
+                        $('#pageSize').val(obj.limit);
+                    if(!first) {
+                        $('#articleForm').submit();
+                    }
                 }
             })
         })
-        /**
-         * 获取当前项目路径
-         * @returns
-         */
-        function getRootPath(){
-            //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
-            var curWwwPath=window.document.location.href;
-            //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
-            var pathName=window.document.location.pathname;
-            var pos=curWwwPath.indexOf(pathName);
-            //获取主机地址，如： http://localhost:8083
-            var localhostPaht=curWwwPath.substring(0,pos);
-            //获取带"/"的项目名，如：/uimcardprj
-            /*var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);*/
-            return(localhostPaht);
-        };
+    </script>
+    <%--批量删除--%>
+    <script>
+        function batchdelete() {
+            var chckBox = document.getElementsByName("ids");
+            var num = chckBox.length;
+            var ids = [];
+            var pointer = 0;
+            for (var index = 0; index < num; index++) {
+                if (chckBox[index].checked) {
+                    ids[pointer] = chckBox[index].value;
+                    pointer++;
+                }
+            }
+            layer.confirm("确定要删除" + ids + "吗?", function () {
+                transpDelPart(ids);
+            })
+        }
+        function transpDelPart(ids){
+            $.ajax({
+                type : "GET",
+                async : false,
+                data:"ids="+ids,
+                url : '/admin/article/delete',
+                success:function(data){
+                    if(data.status!==200){
+                        layer.msg(data.msg,{icon:1,time:1000},function(){window.location.reload()});
+                    }else{
+                        layer.msg('删除成功!',{icon:1,time:1000},function(){window.location.reload()});
+                    }
+                }
+            })
+        }
+        function deleteArticle(id) {
+            layer.confirm("确定要删除" + id + "吗?",function () {
+                var ids = [id];
+                transpDelPart(ids);
+            })
+        }
     </script>
 </rapid:override>
 <%@ include file="../Public/framework.jsp" %>

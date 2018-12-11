@@ -14,6 +14,12 @@ public interface ArticleMapper {
     List<CustomerArticle> selectCustomArticle();
 
     /**
+     * 根据文章id查询单个文章信息
+     * @param aid
+     * @return
+     */
+    CustomerArticle selectArticleById(int aid);
+    /**
      * 根据类型id查询全部类型信息
      * @param cid
      * @return
@@ -26,4 +32,10 @@ public interface ArticleMapper {
      * @return
      */
     List<Tag> selectTags(int[] tid);
+
+    /**
+     * 批量删除文章
+     * @param ids
+     */
+    void deleteArticle(int[] ids);
 }

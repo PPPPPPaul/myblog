@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lk.mapper.TagMapper">
+    <resultMap id="tagResult" type="com.lk.pojo.Tag">
+        <id column="tag_id" property="tagId" jdbcType="INTEGER"></id>
+        <result column="tag_name" property="tagName" jdbcType="VARCHAR"></result>
+        <result column="tag_description" property="tagDescription" jdbcType="VARCHAR"></result>
+        <result column="tag_status" property="tagStatus" jdbcType="INTEGER"></result>
+    </resultMap>
+    <sql id="Tag_Base_Column">
+        tag_id,tag_name,tag_description,tag_status
+    </sql>
+    <select id="selectTags" resultMap="tagResult">
+        select
+          <include refid="Tag_Base_Column"></include>
+        from tag
+    </select>
+</mapper>

@@ -56,11 +56,13 @@
             LEFT JOIN category c ON a.article_parent_category_id = c.category_id
             LEFT JOIN category d ON a.article_child_category_id = d.category_id
     </select>-->
+    <!--查询文章信息-->
     <select id="selectCustomArticle" resultMap="articleResult">
         select
           <include refid="Article_Base_Column"></include>
         from article
     </select>
+    <!--查询文章对应的类别-->
     <select id="selectCategories" parameterType="int[]" resultMap="categoryResult">
         select
           <include refid="Category_Base_Column"></include>
@@ -70,6 +72,7 @@
             #{cid}
         </foreach>
     </select>
+    <!--查询文章对应的标签信息-->
     <select id="selectTags" parameterType="int[]" resultMap="tagResult">
         select
           <include refid="Tag_Base_Column"></include>
@@ -79,5 +82,20 @@
               #{tid}
           </foreach>
     </select>
-
+    <!--根据文章id查询单个文章信息-->
+    <select id="selectArticleById" parameterType="int" resultMap="articleResult">
+        select
+          <include refid="Article_Base_Column"></include>
+        from article
+          where article_id = #{article_id}
+    </select>
+    <!--删除文章信息-->
+    <delete id="deleteArticle" parameterType="int[]">
+        delete from article
+          <where>
+              <foreach collection="array" item="ids" open="(" close=")" separator="or">
+                  article_id=#{ids}
+              </foreach>
+          </where>
+    </delete>
 </mapper>

@@ -33,5 +33,7 @@
     <dubbo:registry protocol="zookeeper" address="192.168.255.129:2181"/>
     <dubbo:reference interface="com.lk.service.LoginService" id="loginService"/>
     <dubbo:reference interface="com.lk.service.ArticleService" id="articleService"/>
+    <dubbo:reference interface="com.lk.service.TagService" id="tagService"/>
+    <dubbo:reference interface="com.lk.service.CategoryService" id="categoryService"/>
 
 </beans>

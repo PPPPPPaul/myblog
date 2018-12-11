@@ -11,27 +11,15 @@ public class PageController {
         return "/Home/index";
     }
     @RequestMapping("/admin")
-    public String toAdmin(){
-        return "/Admin/index";
+    public String toArticleIndex(){
+        return "/Admin/Article/index";
+    }
+    @RequestMapping("/admin/article/{page}")
+    public String toArticle(){
+        return "/Admin/Article/{page}";
     }
     @RequestMapping("/admin/login")
     public String toLogin(){
         return "/Admin/login";
-    }
-    @RequestMapping("/admin/category")
-    public String toCategoryIndex(){
-        return "/Admin/Article/index";
-    }
-    @RequestMapping("/admin/category/{page}")
-    public String toCategory(@PathVariable String page){
-        return "/Admin/Category/"+page;
-    }
-    @RequestMapping("/admin/tag")
-    public String toTagIndex(){
-        return "/Admin/Article/index";
-    }
-    @RequestMapping("/admin/tag/{page}")
-    public String toTag(@PathVariable String page){
-        return "/Admin/Tag/"+page;
     }
 }

@@ -24,7 +24,7 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo"><a href="/admin" style="color:#009688;">
-        ${options.optionSiteTitle}后台
+        ${options.optionSiteTitle}个人博客后台管理系统
         </a>
         </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
