@@ -23,4 +23,10 @@ public interface UserMapper {
      * @return
      */
     List<User> selectUserList();
+
+    /**
+     * 更新数据库用户信息
+     * @param user
+     */
+    void updateUser(User user);
 }

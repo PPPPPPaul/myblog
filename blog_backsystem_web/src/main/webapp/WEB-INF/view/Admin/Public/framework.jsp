@@ -11,7 +11,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <link rel="shortcut icon" href="/img/logo.png">
     <title>
-        ${options.optionSiteTitle}后台
+        ${options.optionSiteTitle}个人博客后台管理系统
             <rapid:block name="title"></rapid:block>
     </title>
     <link rel="stylesheet" href="/plugin/layui/css/layui.css">
@@ -46,7 +46,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="${loginUser.userAvatar}" class="layui-nav-img">
-                    ${loginUser.userName}
+                    ${loginUser.userNickname}
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="/admin/user/profile/${loginUser.userId}">基本资料</a></dd>

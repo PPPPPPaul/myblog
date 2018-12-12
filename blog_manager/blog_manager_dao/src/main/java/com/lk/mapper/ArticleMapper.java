@@ -1,8 +1,7 @@
 package com.lk.mapper;
 
-import com.lk.pojo.Category;
-import com.lk.pojo.Tag;
-import com.lk.pojo.custom.CustomerArticle;
+import com.lk.pojo.Article;
+import com.lk.pojo.custom.ArticleCustomer;
 
 import java.util.List;
 
@@ -11,31 +10,30 @@ public interface ArticleMapper {
      * 查询全部文章信息
      * @return
      */
-    List<CustomerArticle> selectCustomArticle();
+    List<ArticleCustomer> selectCustomArticle();
 
     /**
      * 根据文章id查询单个文章信息
      * @param aid
      * @return
      */
-    CustomerArticle selectArticleById(int aid);
-    /**
-     * 根据类型id查询全部类型信息
-     * @param cid
-     * @return
-     */
-    List<Category> selectCategories(int[] cid);
-
-    /**
-     * 根据标签id查询全部标签信息
-     * @param tid
-     * @return
-     */
-    List<Tag> selectTags(int[] tid);
+    ArticleCustomer selectArticleById(int aid);
 
     /**
      * 批量删除文章
      * @param ids
      */
     void deleteArticle(int[] ids);
+
+    /**
+     * 项数据库插入新的文章信息
+     * @param article
+     */
+    void insertArticle(Article article);
+
+    /**
+     * 修改文章的数据库信息
+     * @param article
+     */
+    void updateArticle(Article article);
 }

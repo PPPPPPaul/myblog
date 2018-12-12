@@ -109,7 +109,6 @@
 
 </rapid:override>
 <rapid:override name="footer-script">
-
     <script>
         //上传图片
         layui.use('upload', function () {
@@ -118,15 +117,18 @@
             var uploadInst = upload.render({
                 elem: '#test1',
                 url: '/uploadFile',
+                multiple: true,
                 before: function (obj) {
                     obj.preview(function (index, file, result) {
                         $('#demo1').attr('src', result);
                     });
                 },
                 done: function (res) {
-                    $("#userAvatar").attr("value", res.data.src);
-                    if (res.code > 0) {
+                    $("#userAvatar").attr("value",res.url);
+                    if (res.error == 1) {
                         return layer.msg('上传失败');
+                    }else{
+                        return layer.msg('上传成功');
                     }
                 },
                 error: function () {

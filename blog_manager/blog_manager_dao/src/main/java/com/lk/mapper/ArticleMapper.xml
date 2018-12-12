@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lk.mapper.ArticleMapper">
-    <resultMap id="articleResult" type="com.lk.pojo.custom.CustomerArticle">
+    <resultMap id="articleResult" type="com.lk.pojo.custom.ArticleCustomer">
         <id column="article_id" property="articleId" jdbcType="INTEGER"></id>
         <result column="article_user_id" property="articleUserId" jdbcType="INTEGER"></result>
         <result column="article_title" property="articleTitle" jdbcType="VARCHAR"></result>
@@ -18,29 +18,8 @@
         <result column="article_status" property="articleStatus" jdbcType="INTEGER"></result>
         <result column="article_order" property="articleOrder" jdbcType="INTEGER"></result>
     </resultMap>
-    <resultMap id="categoryResult" type="com.lk.pojo.Category">
-        <id column="category_id" property="categoryId" jdbcType="INTEGER"></id>
-        <result column="category_pid" property="categoryPid" jdbcType="INTEGER"></result>
-        <result column="category_name" property="categoryName" jdbcType="VARCHAR"></result>
-        <result column="category_description" property="categoryDescription" jdbcType="VARCHAR"></result>
-        <result column="category_order" property="categoryOrder" jdbcType="INTEGER"></result>
-        <result column="category_icon" property="categoryIcon" jdbcType="VARCHAR"></result>
-        <result column="category_status" property="categoryStatus" jdbcType="INTEGER"></result>
-    </resultMap>
-    <resultMap id="tagResult" type="com.lk.pojo.Tag">
-        <id column="tag_id" property="tagId" jdbcType="INTEGER"></id>
-        <result column="tag_name" property="tagName" jdbcType="VARCHAR"></result>
-        <result column="tag_description" property="tagDescription" jdbcType="VARCHAR"></result>
-        <result column="tag_status" property="tagStatus" jdbcType="INTEGER"></result>
-    </resultMap>
     <sql id="Article_Base_Column">
         article_id,article_user_id,article_title,article_content,article_parent_category_id,article_child_category_id,article_tag_ids,article_view_count,article_comment_count,article_like_count,article_post_time,article_update_time,article_is_comment,article_status,article_order
-    </sql>
-    <sql id="Category_Base_Column">
-        category_id,category_pid,category_name,category_description,category_order,category_icon,category_status
-    </sql>
-    <sql id="Tag_Base_Column">
-        tag_id,tag_name,tag_description,tag_status
     </sql>
 <!--    <select id="selectAllArticle" resultMap="customerArticleResult">
         SELECT
@@ -61,26 +40,7 @@
         select
           <include refid="Article_Base_Column"></include>
         from article
-    </select>
-    <!--查询文章对应的类别-->
-    <select id="selectCategories" parameterType="int[]" resultMap="categoryResult">
-        select
-          <include refid="Category_Base_Column"></include>
-        from category
-          where category_id in
-        <foreach collection="array" item="cid" open="(" close=")" separator=",">
-            #{cid}
-        </foreach>
-    </select>
-    <!--查询文章对应的标签信息-->
-    <select id="selectTags" parameterType="int[]" resultMap="tagResult">
-        select
-          <include refid="Tag_Base_Column"></include>
-        from tag
-          where tag_id in
-          <foreach collection="array" item="tid" open="(" close=")" separator=",">
-              #{tid}
-          </foreach>
+        order by article_id desc
     </select>
     <!--根据文章id查询单个文章信息-->
     <select id="selectArticleById" parameterType="int" resultMap="articleResult">
@@ -98,4 +58,145 @@
               </foreach>
           </where>
     </delete>
+    <!--插入新的文章信息-->
+    <insert id="insertArticle" parameterType="com.lk.pojo.Article">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleUserId != null">
+                article_user_id,
+            </if>
+            <if test="articleTitle != null">
+                article_title,
+            </if>
+            <if test="articleContent != null">
+                article_content,
+            </if>
+            <if test="articleParentCategoryId != null">
+                article_parent_category_id,
+            </if>
+            <if test="articleChildCategoryId != null">
+                article_child_category_id,
+            </if>
+            <if test="articleTagIds != null">
+                article_tag_ids,
+            </if>
+            <if test="articleViewCount != null">
+                article_view_count,
+            </if>
+            <if test="articleCommentCount != null">
+                article_comment_count,
+            </if>
+            <if test="articleLikeCount != null">
+                article_like_count,
+            </if>
+            <if test="articlePostTime != null">
+                article_post_time,
+            </if>
+            <if test="articleUpdateTime != null">
+                article_update_time,
+            </if>
+            <if test="articleIsComment != null">
+                article_is_comment,
+            </if>
+            <if test="articleStatus != null">
+                article_status,
+            </if>
+            <if test="articleOrder != null">
+                article_order,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="articleUserId != null">
+                #{articleUserId,jdbcType=INTEGER},
+            </if>
+            <if test="articleTitle != null">
+                #{articleTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="articleContent != null">
+                #{articleContent,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="articleParentCategoryId != null">
+                #{articleParentCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="articleChildCategoryId != null">
+                #{articleChildCategoryId,jdbcType=INTEGER},
+            </if>
+            <if test="articleTagIds != null">
+                #{articleTagIds,jdbcType=VARCHAR},
+            </if>
+            <if test="articleViewCount != null">
+                #{articleViewCount,jdbcType=INTEGER},
+            </if>
+            <if test="articleCommentCount != null">
+                #{articleCommentCount,jdbcType=INTEGER},
+            </if>
+            <if test="articleLikeCount != null">
+                #{articleLikeCount,jdbcType=INTEGER},
+            </if>
+            <if test="articlePostTime != null">
+                #{articlePostTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="articleUpdateTime != null">
+                #{articleUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="articleIsComment != null">
+                #{articleIsComment,jdbcType=INTEGER},
+            </if>
+            <if test="articleStatus != null">
+                #{articleStatus,jdbcType=INTEGER},
+            </if>
+            <if test="articleOrder != null">
+                #{articleOrder,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <!--修改文章信息-->
+    <update id="updateArticle" parameterType="com.lk.pojo.Article">
+        update article
+        <set>
+            <if test="articleUserId != null">
+                #{article_user_id,jdbcType=INTEGER},
+            </if>
+            <if test="articleTitle != null">
+                #{article_title,jdbcType=VARCHAR},
+            </if>
+            <if test="articleContent != null">
+                #{article_content,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="articleParentCategoryId != null">
+                #{article_parent_category_id,jdbcType=INTEGER},
+            </if>
+            <if test="articleChildCategoryId != null">
+                #{article_child_category_id,jdbcType=INTEGER},
+            </if>
+            <if test="articleTagIds != null">
+                #{article_tag_ids,jdbcType=VARCHAR},
+            </if>
+            <if test="articleViewCount != null">
+                #{article_view_count,jdbcType=INTEGER},
+            </if>
+            <if test="articleCommentCount != null">
+                #{article_comment_count,jdbcType=INTEGER},
+            </if>
+            <if test="articleLikeCount != null">
+                #{article_like_count,jdbcType=INTEGER},
+            </if>
+            <if test="articlePostTime != null">
+                #{article_post_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="articleUpdateTime != null">
+                #{article_update_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="articleIsComment != null">
+                #{article_is_comment,jdbcType=INTEGER},
+            </if>
+            <if test="articleStatus != null">
+                #{article_status,jdbcType=INTEGER},
+            </if>
+            <if test="articleOrder != null">
+                #{article_order,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE article_id=#{article_id}
+    </update>
 </mapper>

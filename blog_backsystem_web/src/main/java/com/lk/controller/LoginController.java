@@ -15,14 +15,32 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private LoginService loginService;
+    /**
+     * 用户登入
+     * @param user
+     * @param request
+     * @return
+     */
     @RequestMapping("/loginVerify")
     @ResponseBody
     public YHResult userVerify(User user, HttpServletRequest request){
         YHResult result = loginService.loginVerify(user);
+        //将后台拿到的用户数据放入session域中
         User dbuser = (User) result.getData();
         HttpSession session = request.getSession();
-        session.setAttribute("username",dbuser.getUserName());
         session.setAttribute("loginUser",dbuser);
         return result;
+    }
+
+    /**
+     * 用户登出
+     * @param request
+     * @return
+     */
+    @RequestMapping("/admin/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute("loginUser");
+        return "Admin/login";
     }
 }

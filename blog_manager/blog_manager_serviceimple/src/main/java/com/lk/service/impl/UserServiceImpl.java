@@ -29,4 +29,14 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
+    @Override
+    public User editUser(User user) {
+        try {
+            userMapper.updateUser(user);
+            return userMapper.selectUserById(user.getUserId());
+        }catch (Exception e) {
+            return null;
+        }
+    }
 }

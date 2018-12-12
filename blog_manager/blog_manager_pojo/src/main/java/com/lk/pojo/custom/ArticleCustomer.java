@@ -7,7 +7,7 @@ import com.lk.pojo.Tag;
 import java.io.Serializable;
 import java.util.List;
 
-public class CustomerArticle extends Article implements Serializable {
+public class ArticleCustomer extends Article implements Serializable {
     private List<Category> categoryCustomList;
     private List<Tag> tagCustomList;
 

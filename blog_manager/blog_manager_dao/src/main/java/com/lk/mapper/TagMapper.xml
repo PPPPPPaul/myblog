@@ -10,9 +10,20 @@
     <sql id="Tag_Base_Column">
         tag_id,tag_name,tag_description,tag_status
     </sql>
+    <!--查询的全部标签-->
     <select id="selectTags" resultMap="tagResult">
         select
           <include refid="Tag_Base_Column"></include>
         from tag
+    </select>
+    <!--查询文章对应的标签信息-->
+    <select id="selectTagsForArticle" parameterType="int[]" resultMap="tagResult">
+        select
+        <include refid="Tag_Base_Column"></include>
+        from tag
+        where tag_id in
+        <foreach collection="array" item="tid" open="(" close=")" separator=",">
+            #{tid}
+        </foreach>
     </select>
 </mapper>

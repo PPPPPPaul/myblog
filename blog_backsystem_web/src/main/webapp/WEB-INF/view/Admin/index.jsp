@@ -231,10 +231,10 @@
                         <div id="published-posts" class="activity-block"><h3>最近发布</h3> <br>
                             <ul>
                                 <c:forEach items="${articleCustomList}" begin="0" end="4" step="1" var="a">
-                                    <li><span><fmt:formatDate value="${a.articleCustom.articlePostTime}"
+                                    <li><span><fmt:formatDate value="${a.articlePostTime}"
                                                               pattern="HH:mm MM月dd日"/> </span>
-                                        <a href="/article/${a.articleCustom.articleId}"
-                                           target="_blank">${a.articleCustom.articleTitle}</a>
+                                        <a href="/article/${a.articleId}"
+                                           target="_blank">${a.articleTitle}</a>
                                     </li>
                                 </c:forEach>
 
@@ -255,7 +255,7 @@
                                                    rel="external nofollow"
                                                    class="url">${c.commentCustom.commentAuthorName}</a>
                                             </cite>发表在《<a
-                                                    href="/article/${c.commentCustom.commentArticleId}">${c.articleCustom.articleTitle}</a>》
+                                                    href="/article/${c.commentArticleId}">${c.articleTitle}</a>》
                                                 <c:if test="${c.commentCustom.commentStatus==0}">
                                                     <span class="approve">[待审]</span>
                                                 </c:if>

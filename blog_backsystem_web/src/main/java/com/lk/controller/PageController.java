@@ -1,6 +1,7 @@
 package com.lk.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,10 +10,6 @@ public class PageController {
     @RequestMapping("/")
     public String toIndex(){
         return "/Home/index";
-    }
-    @RequestMapping("/admin")
-    public String toArticleIndex(){
-        return "/Admin/Article/index";
     }
     @RequestMapping("/admin/article/{page}")
     public String toArticle(){

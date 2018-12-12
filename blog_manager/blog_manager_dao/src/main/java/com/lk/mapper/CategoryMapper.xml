@@ -10,12 +10,39 @@
         <result column="category_icon" property="categoryIcon" jdbcType="VARCHAR"></result>
         <result column="category_status" property="categoryStatus" jdbcType="INTEGER"></result>
     </resultMap>
+    <resultMap id="categoryCustomResult" type="com.lk.pojo.custom.CategoryCustom">
+        <id column="category_id" property="categoryId" jdbcType="INTEGER"></id>
+        <result column="category_pid" property="categoryPid" jdbcType="INTEGER"></result>
+        <result column="category_name" property="categoryName" jdbcType="VARCHAR"></result>
+        <result column="category_description" property="categoryDescription" jdbcType="VARCHAR"></result>
+        <result column="category_order" property="categoryOrder" jdbcType="INTEGER"></result>
+        <result column="category_icon" property="categoryIcon" jdbcType="VARCHAR"></result>
+        <result column="category_status" property="categoryStatus" jdbcType="INTEGER"></result>
+        <result column="articleCount" property="articleCount" jdbcType="INTEGER"></result>
+    </resultMap>
     <sql id="Category_Base_Column">
         category_id,category_pid,category_name,category_description,category_order,category_icon,category_status
     </sql>
+    <!--查询全部的类别-->
     <select id="selectCategoryList" resultMap="categoryResult">
         select
           <include refid="Category_Base_Column"></include>
         from category
+    </select>
+    <!--查询文章对应的类别-->
+    <select id="selectCategories" parameterType="int[]" resultMap="categoryResult">
+        select
+        <include refid="Category_Base_Column"></include>
+        from category
+        where category_id in
+        <foreach collection="array" item="cid" open="(" close=")" separator=",">
+            #{cid}
+        </foreach>
+    </select>
+    <!--查询出自定义类别-->
+    <select id="selectCategoryCustom" resultMap="categoryCustomResult">
+       select
+          c.category_id,c.category_pid,c.category_name,c.category_description,c.category_order,c.category_icon,c.category_status,count(a.article_id) articleCount
+       from category c left join article a on (a.article_parent_category_id=c.category_id or a.article_child_category_id=c.category_id)group by c.category_id
     </select>
 </mapper>

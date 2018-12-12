@@ -21,8 +21,8 @@ public class loginInterceptor implements HandlerInterceptor {
         }
         //否则请求不是登陆界面，需要查看session中是否有登录用户信息
         HttpSession session = request.getSession();
-        Object username = session.getAttribute("username");
-        if (username!=null){
+        Object user = session.getAttribute("loginUser");
+        if (user!=null){
             return true;
         }
         //没有用户信息则请求转发至登陆界面

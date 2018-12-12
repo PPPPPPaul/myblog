@@ -5,7 +5,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 public class PictureUtil {
-	
+	/**
+	 *
+	 * @param uploadFile
+	 * @param img_addr
+	 * @return
+	 */
 	public static PictureResult uploadFile(MultipartFile uploadFile, String img_addr){
 		PictureResult res = new PictureResult();
 		if(uploadFile != null){

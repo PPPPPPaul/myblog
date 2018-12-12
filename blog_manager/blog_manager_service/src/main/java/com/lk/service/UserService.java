@@ -17,4 +17,10 @@ public interface UserService {
      * @return
      */
     User getMyProfile(int uid);
+
+    /**
+     * 编辑用户
+     * @param user
+     */
+    User editUser(User user);
 }
