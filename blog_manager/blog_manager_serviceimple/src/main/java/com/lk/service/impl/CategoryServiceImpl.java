@@ -30,4 +30,24 @@ public class CategoryServiceImpl implements CategoryService {
             return null;
         }
     }
+
+    @Override
+    public Category getCategory(int cid) {
+        return categoryMapper.selectCategory(cid);
+    }
+
+    @Override
+    public void insertCategory(Category category) {
+        categoryMapper.insertCategory(category);
+    }
+
+    @Override
+    public void updateCategory(Category category) {
+        categoryMapper.updateCategory(category);
+    }
+
+    @Override
+    public void deleteCateGory(int cid) {
+        categoryMapper.deleteCategory(cid);
+    }
 }

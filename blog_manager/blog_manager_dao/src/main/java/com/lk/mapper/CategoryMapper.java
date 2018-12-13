@@ -23,4 +23,29 @@ public interface CategoryMapper {
      * @return
      */
     List<CategoryCustom> selectCategoryCustom();
+
+    /**
+     * 根据类别id查询类别对象
+     * @param cid
+     * @return
+     */
+    Category selectCategory(int cid);
+
+    /**
+     * 添加新的类别
+     * @param category
+     */
+    void insertCategory(Category category);
+
+    /**
+     * 修改类别信息
+     * @param category
+     */
+    void updateCategory(Category category);
+
+    /**
+     * 删除类别
+     * @param cid
+     */
+    void deleteCategory(int cid);
 }

@@ -100,7 +100,7 @@ function insertDraft() {
 
 }
 
-//删除文章
+/*//删除文章
 function deleteArticle(id) {
     if(confirmDelete()==true){
         $.ajax({
@@ -114,7 +114,7 @@ function deleteArticle(id) {
             }
         })
     }
-}
+}*/
 
 //查询文章
 function queryArticle() {
@@ -123,8 +123,7 @@ function queryArticle() {
     $("#articleForm").submit();
 }
 
-//批量删除文章
-function confirmDeleteArticleBatch() {
+/*function confirmDeleteArticleBatch() {
     if(confirmDelete()==true){
         var text = $("input:checkbox[name='ids']:checked").map(function(index,elem) {
             return $(elem).val();
@@ -141,7 +140,51 @@ function confirmDeleteArticleBatch() {
             }
         })
     }
+}*/
+
+//批量删除文章
+function batchdelete() {
+    var chckBox = document.getElementsByName("ids");
+    var num = chckBox.length;
+    var ids = [];
+    var pointer = 0;
+    for (var index = 0; index < num; index++) {
+        if (chckBox[index].checked) {
+            ids[pointer] = chckBox[index].value;
+            pointer++;
+        }
+    }
+    layer.confirm("确定要删除" + ids + "吗?", function () {
+        transpDelPart(ids);
+    })
 }
+function transpDelPart(ids){
+    $.ajax({
+        type : "GET",
+        async : false,
+        data:"ids="+ids,
+        url : '/admin/article/delete',
+        success:function(data){
+            if(data.status!==200){
+                layer.msg(data.msg,{icon:1,time:1000},function(){window.location.reload()});
+            }else{
+                layer.msg('删除成功!',{icon:1,time:1000},function(){window.location.reload()});
+            }
+        }
+    })
+}
+
+
+
+
+//单点删除
+function deleteArticle(id) {
+    layer.confirm("确定要删除" + id + "吗?",function () {
+        var ids = [id];
+        transpDelPart(ids);
+    })
+}
+
 
 //退出登录
 function logout() {

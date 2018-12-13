@@ -7,15 +7,42 @@
         <result column="tag_description" property="tagDescription" jdbcType="VARCHAR"></result>
         <result column="tag_status" property="tagStatus" jdbcType="INTEGER"></result>
     </resultMap>
+    <resultMap id="tagCustomResult" type="com.lk.pojo.custom.TagCustom">
+        <id column="tag_id" property="tagId" jdbcType="INTEGER"></id>
+        <result column="tag_name" property="tagName" jdbcType="VARCHAR"></result>
+        <result column="tag_description" property="tagDescription" jdbcType="VARCHAR"></result>
+        <result column="tag_status" property="tagStatus" jdbcType="INTEGER"></result>
+        <result column="articleCount" property="articleCount" jdbcType="INTEGER"></result>
+    </resultMap>
     <sql id="Tag_Base_Column">
         tag_id,tag_name,tag_description,tag_status
     </sql>
+
+
+
+
     <!--查询的全部标签-->
     <select id="selectTags" resultMap="tagResult">
         select
-          <include refid="Tag_Base_Column"></include>
+        <include refid="Tag_Base_Column"></include>
         from tag
+        where tag_status=1
     </select>
+
+
+
+
+    <!--通过标签id获取单个标签对象-->
+    <select id="selectTag" parameterType="int" resultMap="tagResult">
+        select
+        <include refid="Tag_Base_Column"></include>
+        from tag
+        where tag_id=#{tid}
+    </select>
+
+
+
+
     <!--查询文章对应的标签信息-->
     <select id="selectTagsForArticle" parameterType="int[]" resultMap="tagResult">
         select
@@ -26,4 +53,78 @@
             #{tid}
         </foreach>
     </select>
+
+
+
+
+    <!--通过标签id查询到，标签信息和该标签的文章总数-->
+    <select id="selectTagCustom" resultMap="tagCustomResult">
+        select
+        <include refid="Tag_Base_Column"></include>
+        ,count(article_id) articleCount
+        from article a,tag t
+        where t.tag_id=#{tagId} and (a.article_tag_ids like '%${tagId}%' or
+        a.article_tag_ids like '%${tagId},%' or
+        a.article_tag_ids like '%,${tagId},%' or
+        a.article_tag_ids like '%,${tagId}%')
+    </select>
+
+
+
+
+    <!--插入新的标签信息-->
+    <insert id="insertTag" parameterType="com.lk.pojo.Tag">
+        insert into tag
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+              <if test="tagName != null">
+                  tag_name
+              </if>
+              <if test="tagDescription != null">
+                  tag_description
+              </if>
+              <if test="tagStatus != null">
+                  tag_status
+              </if>
+          </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="tagName != null">
+                #{tagName,jdbcType=VARCHAR}
+            </if>
+            <if test="tagDescription != null">
+                #{tagDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="tagStatus != null">
+                #{tagStatus,jdbcType=INTEGER}
+            </if>
+        </trim>
+    </insert>
+
+
+
+
+    <!--根据标签id删除标签-->
+    <delete id="deleteTagById" parameterType="int">
+        delete from tag
+        where tag_id=#{tid}
+    </delete>
+
+
+
+
+    <!--保存编辑的标签信息-->
+    <update id="updateTag" parameterType="com.lk.pojo.Tag">
+        update tag
+        <set>
+            <if test="tagName != null">
+                tag_name=#{tagName,jdbcType=VARCHAR},
+            </if>
+            <if test="tagDescription != null">
+                tag_description=#{tagDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="tagStatus != null">
+                tag_status=#{tagStatus,jdbcType=INTEGER},
+            </if>
+        </set>
+        where tag_id=#{tagId}
+    </update>
 </mapper>

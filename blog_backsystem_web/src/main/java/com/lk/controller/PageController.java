@@ -11,8 +11,13 @@ public class PageController {
     public String toIndex(){
         return "/Home/index";
     }
+
+
+    /*
+    * 后台页面跳转
+    * */
     @RequestMapping("/admin/article/{page}")
-    public String toArticle(){
+    public String toAdminArticle(){
         return "/Admin/Article/{page}";
     }
     @RequestMapping("/admin/login")

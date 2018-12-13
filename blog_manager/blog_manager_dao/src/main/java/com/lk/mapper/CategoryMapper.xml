@@ -23,12 +23,21 @@
     <sql id="Category_Base_Column">
         category_id,category_pid,category_name,category_description,category_order,category_icon,category_status
     </sql>
+
+
+
+
     <!--查询全部的类别-->
     <select id="selectCategoryList" resultMap="categoryResult">
         select
-          <include refid="Category_Base_Column"></include>
+        <include refid="Category_Base_Column"></include>
         from category
+        where category_status=1
     </select>
+
+
+
+
     <!--查询文章对应的类别-->
     <select id="selectCategories" parameterType="int[]" resultMap="categoryResult">
         select
@@ -39,10 +48,111 @@
             #{cid}
         </foreach>
     </select>
+
+
+
+
     <!--查询出自定义类别-->
     <select id="selectCategoryCustom" resultMap="categoryCustomResult">
        select
           c.category_id,c.category_pid,c.category_name,c.category_description,c.category_order,c.category_icon,c.category_status,count(a.article_id) articleCount
        from category c left join article a on (a.article_parent_category_id=c.category_id or a.article_child_category_id=c.category_id)group by c.category_id
     </select>
+
+
+
+
+    <!--根据类别id查询类别对象-->
+    <select id="selectCategory" parameterType="int" resultMap="categoryResult">
+        select
+        <include refid="Category_Base_Column"></include>
+        from category
+        where category_id=#{cid}
+    </select>
+
+
+
+
+    <!--插入新的类别-->
+    <insert id="insertCategory" parameterType="com.lk.pojo.Category">
+        insert into category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="categoryPid != null">
+                category_pid
+            </if>
+            <if test="categoryName != null">
+                category_name
+            </if>
+            <if test="categoryDescription != null">
+                category_description
+            </if>
+            <if test="categoryOrder != null">
+                category_order
+            </if>
+            <if test="categoryIcon != null">
+                category_icon
+            </if>
+            <if test="categoryStatus != null">
+                category_status
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="categoryPid != null">
+                #{categoryPid,jdbcType=INTEGER}
+            </if>
+            <if test="categoryName != null">
+                #{categoryName,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryDescription != null">
+                #{categoryDescription,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryOrder != null">
+                #{categoryOrder,jdbcType=INTEGER}
+            </if>
+            <if test="categoryIcon != null">
+                #{categoryIcon,jdbcType=VARCHAR}
+            </if>
+            <if test="categoryStatus != null">
+                #{categoryStatus,jdbcType=INTEGER}
+            </if>
+        </trim>
+    </insert>
+
+
+
+
+    <!--修改类别-->
+    <update id="updateCategory" parameterType="com.lk.pojo.Category">
+        update category
+        <set>
+            <if test="categoryPid != null">
+                category_pid=#{categoryPid},
+            </if>
+            <if test="categoryName != null">
+                category_name=#{categoryName},
+            </if>
+            <if test="categoryDescription != null">
+                category_description=#{categoryDescription},
+            </if>
+            <if test="categoryOrder != null">
+                category_order=#{categoryOrder},
+            </if>
+            <if test="categoryIcon != null">
+                category_icon=#{categoryIcon},
+            </if>
+            <if test="categoryStatus != null">
+                category_status=#{categoryStatus},
+            </if>
+        </set>
+        where category_id=#{categoryId}
+    </update>
+
+
+
+
+    <!--根据类别id删除类别-->
+    <delete id="deleteCategory" parameterType="int">
+        delete from category
+        where category_id=#{cid}
+    </delete>
 </mapper>

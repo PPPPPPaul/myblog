@@ -7,6 +7,7 @@ import com.lk.pojo.Category;
 import com.lk.pojo.Tag;
 import com.lk.pojo.custom.ArticleCustomer;
 import com.lk.pojo.custom.CategoryCustom;
+import com.lk.pojo.custom.TagCustom;
 import com.lk.service.ArticleService;
 import com.lk.service.CategoryService;
 import com.lk.service.TagService;
@@ -65,7 +66,7 @@ public class ArticleController {
     }
 
     /**
-     * 根据文章id获取单个文章信息
+     * 编辑文章前，根据文章id获取单个文章信息
      *
      * @param model
      * @param articleId
@@ -90,7 +91,7 @@ public class ArticleController {
     @RequestMapping("/admin/article/editSubmit")
     public String updateArticle(Article article){
         articleService.updateArticle(article);
-        return "Admin/Article/index";
+        return "forward:/admin/article";
     }
 
     /**
@@ -134,8 +135,8 @@ public class ArticleController {
      */
     @RequestMapping("/admin/tag")
     public String getTags(Model model){
-        List<Tag> tags = tagService.getTagsList();
-        model.addAttribute("tagCustomList",tags);
+        List<TagCustom> tagCustoms = tagService.getTagCustom();
+        model.addAttribute("tagCustomList",tagCustoms);
         return "Admin/Tag/index";
     }
 }

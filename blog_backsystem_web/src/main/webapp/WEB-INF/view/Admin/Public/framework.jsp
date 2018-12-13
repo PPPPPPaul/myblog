@@ -14,13 +14,30 @@
         ${options.optionSiteTitle}个人博客后台管理系统
             <rapid:block name="title"></rapid:block>
     </title>
+    <script src="/js/jquery.min.js"></script>
     <link rel="stylesheet" href="/plugin/layui/css/layui.css">
     <link rel="stylesheet" href="/css/back.css">
     <link rel="stylesheet" href="/plugin/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/loading.css">
     <rapid:block name="header-style"></rapid:block>
     <rapid:block name="header-script"></rapid:block>
+    <script>
+        /**
+         * loading消失时间
+         */
+        function load() {
+            var a= setTimeout("loading.style.transition='opacity 0.3s'",0)
+            //设置透明度改变的过渡时间为0.3秒
+            var b= setTimeout("loading.style.opacity=0",500)
+            //0.5秒后加载动画开始变为透明
+            var c= setTimeout("loading.style.display='none'",800)
+        }
+    </script>
 </head>
-<body>
+<body onload="load()">
+
+
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo"><a href="/admin" style="color:#009688;">
@@ -120,6 +137,21 @@
     </div>
 
     <div class="layui-body">
+        <%--loading   页面载入动画--%>
+            <div id="loading">
+                <div id="loading-center-absolute">
+                    <div class="sk-chasing-dots">
+                        <div class="sk-child sk-dot1"></div>
+                        <div class="sk-child sk-dot2"></div>
+                    </div>
+                </div>
+            </div>
+<%--            <!-- Preloader -->
+            <div id="preloader">
+                <div class="preload-content">
+                    <div id="original-load"></div>
+                </div>
+            </div>--%>
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <rapid:block name="content">
@@ -134,7 +166,7 @@
     </div>
 </div>
 
-<script src="/js/jquery.min.js"></script>
+<%--<script src="/js/jquery.min.js"></script>--%>
 <script src="/plugin/layui/layui.all.js"></script>
 <script src="/js/back.js"></script>
 <rapid:block name="footer-script">

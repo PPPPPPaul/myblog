@@ -104,14 +104,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void updateArticle(Article article) {
-        try {
             //修改文章信息，需要添加修改时间
+        try {
             Date date = new Date();
             article.setArticleUpdateTime(date);
             articleMapper.updateArticle(article);
-        }catch (Exception e){
-
-        }
+        }catch (Exception e){}
     }
 
     @Override

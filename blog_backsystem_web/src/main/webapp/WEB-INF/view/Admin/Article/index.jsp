@@ -205,44 +205,5 @@
             })
         })
     </script>
-    <%--批量删除--%>
-    <script>
-        function batchdelete() {
-            var chckBox = document.getElementsByName("ids");
-            var num = chckBox.length;
-            var ids = [];
-            var pointer = 0;
-            for (var index = 0; index < num; index++) {
-                if (chckBox[index].checked) {
-                    ids[pointer] = chckBox[index].value;
-                    pointer++;
-                }
-            }
-            layer.confirm("确定要删除" + ids + "吗?", function () {
-                transpDelPart(ids);
-            })
-        }
-        function transpDelPart(ids){
-            $.ajax({
-                type : "GET",
-                async : false,
-                data:"ids="+ids,
-                url : '/admin/article/delete',
-                success:function(data){
-                    if(data.status!==200){
-                        layer.msg(data.msg,{icon:1,time:1000},function(){window.location.reload()});
-                    }else{
-                        layer.msg('删除成功!',{icon:1,time:1000},function(){window.location.reload()});
-                    }
-                }
-            })
-        }
-        function deleteArticle(id) {
-            layer.confirm("确定要删除" + id + "吗?",function () {
-                var ids = [id];
-                transpDelPart(ids);
-            })
-        }
-    </script>
 </rapid:override>
 <%@ include file="../Public/framework.jsp" %>
