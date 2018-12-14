@@ -9,7 +9,9 @@ import java.util.List;
 
 public class ArticleCustomer extends Article implements Serializable {
     private List<Category> categoryCustomList;
+
     private List<Tag> tagCustomList;
+
 
     public List<Category> getCategoryCustomList() {
         return categoryCustomList;

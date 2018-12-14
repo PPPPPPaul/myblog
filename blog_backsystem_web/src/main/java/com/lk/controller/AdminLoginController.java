@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class LoginController {
+public class AdminLoginController {
     @Autowired
     private LoginService loginService;
     /**

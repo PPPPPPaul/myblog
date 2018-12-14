@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-public class UserController {
+public class AdminUserController {
     @Autowired
     private UserService userService;
 

@@ -175,7 +175,6 @@
 <script>
     //给文本编辑器的iframe引入代码高亮的css
     $("iframe").contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/highlight.css\">\n");
-
 </script>
 
 </body>

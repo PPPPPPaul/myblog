@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-public class CategoryController {
+public class AdminCategoryController {
     @Autowired
     private CategoryService categoryService;
 

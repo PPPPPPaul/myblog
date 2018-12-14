@@ -60,12 +60,12 @@
             <article class="post">
                 <header class="entry-header">
                     <h1 class="entry-title">
-                            ${articleDetailVo.articleCustom.articleTitle}
+                            ${articleCustom.articleTitle}
                     </h1>
                 </header><!-- .entry-header -->
                 <div class="entry-content">
                     <div class="single-content">
-                            ${articleDetailVo.articleCustom.articleContent}
+                            ${articleCustom.articleContent}
                     </div>
                     <div class="s-weixin">
                         <ul class="weimg1">
@@ -128,10 +128,10 @@
 
                     <footer class="single-footer">
                         <ul class="single-meta">
-                            <c:if test="${sessionScope.user!=null}">
+                            <c:if test="${sessionScope.loginUser!=null}">
                             <li class="edit-link">
                                 <a target="_blank" class="post-edit-link"
-                                   href="/admin/article/edit/${articleDetailVo.articleCustom.articleId}">编辑</a>
+                                   href="/admin/article/edit/${articleCustom.articleId}">编辑</a>
                             </li>
                             </c:if>
                             <li class="comment">

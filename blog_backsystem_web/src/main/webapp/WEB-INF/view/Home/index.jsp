@@ -114,7 +114,7 @@
                 </c:forEach>
             </main>
 
-            <c:if test="${articleListVoList[0].page.totalPageCount>1}">
+            <%--<c:if test="${articleListVoList[0].page.totalPageCount>1}">
             <nav class="navigation pagination" role="navigation">
                 <div class="nav-links">
                     <c:choose>
@@ -135,10 +135,10 @@
                             </c:if>
                         </c:otherwise>
                     </c:choose>
-                        <%--上一页 --%>
+                        &lt;%&ndash;上一页 &ndash;%&gt;
                     <c:choose>
                         <c:when test="${articleListVoList[0].page.pageNow eq 1 }">
-                            <%--当前页为第一页，隐藏上一页按钮--%>
+                            &lt;%&ndash;当前页为第一页，隐藏上一页按钮&ndash;%&gt;
                         </c:when>
                         <c:otherwise>
                             <a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow-1}" >
@@ -146,15 +146,15 @@
                             </a>
                         </c:otherwise>
                     </c:choose>
-                        <%--显示第一页的页码--%>
+                        &lt;%&ndash;显示第一页的页码&ndash;%&gt;
                     <c:if test="${begin >= 2 }">
                         <a class="page-numbers" href="/p/1">1</a>
                     </c:if>
-                        <%--显示点点点--%>
+                        &lt;%&ndash;显示点点点&ndash;%&gt;
                     <c:if test="${begin  > 2 }">
                         <span class="page-numbers dots">…</span>
                     </c:if>
-                        <%--打印 页码--%>
+                        &lt;%&ndash;打印 页码&ndash;%&gt;
                     <c:forEach begin="${begin }" end="${end }" var="i">
                         <c:choose>
                             <c:when test="${i eq articleListVoList[0].page.pageNow }">
@@ -165,20 +165,20 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
-                        <%-- 显示点点点 --%>
+                        &lt;%&ndash; 显示点点点 &ndash;%&gt;
                     <c:if test="${end < articleListVoList[0].page.totalPageCount-1 }">
                         <span class="page-numbers dots">…</span>
                     </c:if>
-                        <%-- 显示最后一页的数字 --%>
+                        &lt;%&ndash; 显示最后一页的数字 &ndash;%&gt;
                     <c:if test="${end < articleListVoList[0].page.totalPageCount }">
                         <a href="/p/${articleListVoList[0].page.totalPageCount}">
                                 ${articleListVoList[0].page.totalPageCount}
                         </a>
                     </c:if>
-                        <%--下一页 --%>
+                        &lt;%&ndash;下一页 &ndash;%&gt;
                     <c:choose>
                         <c:when test="${articleListVoList[0].page.pageNow eq articleListVoList[0].page.totalPageCount }">
-                            <%--到了尾页隐藏，下一页按钮--%>
+                            &lt;%&ndash;到了尾页隐藏，下一页按钮&ndash;%&gt;
                         </c:when>
                         <c:otherwise>
                             <a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow+1}">
@@ -189,8 +189,8 @@
 
                 </div>
             </nav>
-                <%--分页 end--%>
-            </c:if>
+                &lt;%&ndash;分页 end&ndash;%&gt;
+            </c:if>--%>
         </div>
     </rapid:override>
     <%--左侧区域 end--%>

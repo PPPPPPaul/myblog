@@ -22,13 +22,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class ArticleController {
+public class AdminArticleController {
     @Autowired
     private ArticleService articleService;
     @Autowired
     private CategoryService categoryService;
     @Autowired
     private TagService tagService;
+
+
+    @RequestMapping("/article/{articleId}")
+    public String toArticleById(Model model,@PathVariable int articleId){
+        ArticleCustomer article = articleService.getArticleById(articleId);
+        model.addAttribute("articleCustom",article);
+        return "Home/Page/articleDetail";
+    }
 
     /**
      * 后台管理页面主页显示数据

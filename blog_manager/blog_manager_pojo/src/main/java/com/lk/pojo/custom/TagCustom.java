@@ -2,7 +2,9 @@ package com.lk.pojo.custom;
 
 import com.lk.pojo.Tag;
 
-public class TagCustom extends Tag {
+import java.io.Serializable;
+
+public class TagCustom extends Tag implements Serializable {
     private int articleCount;
 
     public int getArticleCount() {

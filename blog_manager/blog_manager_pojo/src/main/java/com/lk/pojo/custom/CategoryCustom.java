@@ -2,7 +2,9 @@ package com.lk.pojo.custom;
 
 import com.lk.pojo.Category;
 
-public class CategoryCustom extends Category {
+import java.io.Serializable;
+
+public class CategoryCustom extends Category implements Serializable {
     private int articleCount;
 
     public int getArticleCount() {

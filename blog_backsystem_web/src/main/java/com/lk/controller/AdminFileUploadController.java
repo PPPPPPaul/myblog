@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class FileUploadController {
+public class AdminFileUploadController {
     @Value("${IMG_ADDR}")
     private String img_addr;
     @RequestMapping("/uploadFile")

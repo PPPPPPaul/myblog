@@ -62,8 +62,12 @@ function approveComment(id) {
         url:'/admin/comment/approve/'+id,
         contentType : "application/x-www-form-urlencoded; charset=utf-8",
         dataType: "text",
-        complete:function () {
-            window.location.reload();
+        complete:function (date) {
+            if (date.status!=200){
+                layer.msg(data.msg(),window.location.reload());
+            } else {
+                layer.msg("已批准",window.location.reload());
+            }
         }
     })
 }
