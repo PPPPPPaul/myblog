@@ -43,9 +43,16 @@
           <include refid="Article_Base_Column"></include>
         from article
         where article_status=1
-        order by article_id desc
     </select>
 
+    <select id="selectRentCustomArticle" resultMap="articleResult">
+        select
+        <include refid="Article_Base_Column"></include>
+        from article
+        where article_status=1
+        order by article_id desc
+        limit 4
+    </select>
     <!--编辑文章前，根据文章id查询单个文章信息-->
     <select id="selectArticleById" parameterType="int" resultMap="articleResult">
         select

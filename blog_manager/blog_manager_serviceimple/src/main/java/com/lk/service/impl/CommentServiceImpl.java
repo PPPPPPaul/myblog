@@ -34,6 +34,16 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public List<Comment> getComment() {
+        return commentMapper.selectCommentsList();
+    }
+
+    @Override
+    public List<CommentCustom> getRentCommentCustoms() {
+        return commentMapper.selectRentCommentCustomer();
+    }
+
+    @Override
     public Comment getCommentById(int cid) {
         return commentMapper.selectByPrimaryKey(cid);
     }
@@ -52,8 +62,7 @@ public class CommentServiceImpl implements CommentService {
     public void replyComment(Comment comment) {
         Date date = new Date();
         comment.setCommentCreateTime(date);
-        comment.setCommentStatus(1);
-
+        comment.setCommentStatus(0);
         commentMapper.insertSelective(comment);
     }
 

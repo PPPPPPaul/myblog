@@ -16,4 +16,7 @@
     <dubbo:service interface="com.lk.service.NoticeService" ref="noticeServiceImpl" timeout="60000"/>
     <dubbo:service interface="com.lk.service.LinkService" ref="linkServiceImpl" timeout="60000"/>
     <dubbo:service interface="com.lk.service.CommentService" ref="commentServiceImpl" timeout="60000"/>
+    <dubbo:service interface="com.lk.service.PageService" ref="pageServiceImpl" timeout="60000"/>
+    <dubbo:service interface="com.lk.service.OptionService" ref="optionServiceImpl" timeout="60000"/>
+    <dubbo:service interface="com.lk.service.MenuService" ref="menuServiceImpl" timeout="60000"/>
 </beans>

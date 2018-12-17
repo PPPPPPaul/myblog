@@ -10,6 +10,7 @@ import com.lk.pojo.custom.CategoryCustom;
 import com.lk.pojo.custom.TagCustom;
 import com.lk.service.ArticleService;
 import com.lk.service.CategoryService;
+import com.lk.service.CommentService;
 import com.lk.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class AdminArticleController {
     private CategoryService categoryService;
     @Autowired
     private TagService tagService;
+    @Autowired
+    private CommentService commentService;
 
 
     @RequestMapping("/article/{articleId}")
@@ -44,8 +47,12 @@ public class AdminArticleController {
      * @return
      */
     @RequestMapping("/admin")
-    public String toArticleIndex(Model model){
+    public String toArticleIndex(Model model, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum, @RequestParam(value = "pageSize", defaultValue = "10") int pageSize){
         model.addAttribute("articleCustomList",articleService.getRecentArticle());
+        model.addAttribute("commentListVoList",commentService.getRentCommentCustoms());
+        model.addAttribute("allcomments",commentService.getComment());
+        model.addAttribute("hiddencomments",commentService.getCommentCustomsNopass(pageNum,pageSize));
+        model.addAttribute("passcomments",commentService.getCommentCustomsPass(pageNum,pageSize));
         return "/Admin/index";
     }
     /**

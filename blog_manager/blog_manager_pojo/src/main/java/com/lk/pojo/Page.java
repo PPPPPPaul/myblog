@@ -1,90 +1,123 @@
 package com.lk.pojo;
 
-
 import java.io.Serializable;
 import java.util.Date;
 
 public class Page implements Serializable {
+    /**
+	* 
+	*/
+    private Integer pageId;
 
-  private Integer pageId;
-  private String pageKey;
-  private String pageTitle;
-  private String pageContent;
-  private Date pageCreateTime;
-  private Date pageUpdateTime;
-  private Integer pageViewCount;
-  private Integer pageCommentCount;
-  private Integer pageStatus;
+    /**
+	* 
+	*/
+    private String pageKey;
 
-  public Integer getPageId() {
-    return pageId;
-  }
+    /**
+	* 
+	*/
+    private String pageTitle;
 
-  public void setPageId(Integer pageId) {
-    this.pageId = pageId;
-  }
+    /**
+	* 
+	*/
+    private Date pageCreateTime;
 
-  public String getPageKey() {
-    return pageKey;
-  }
+    /**
+	* 
+	*/
+    private Date pageUpdateTime;
 
-  public void setPageKey(String pageKey) {
-    this.pageKey = pageKey;
-  }
+    /**
+	* 
+	*/
+    private Integer pageViewCount;
 
-  public String getPageTitle() {
-    return pageTitle;
-  }
+    /**
+	* 
+	*/
+    private Integer pageCommentCount;
 
-  public void setPageTitle(String pageTitle) {
-    this.pageTitle = pageTitle;
-  }
+    /**
+	* 
+	*/
+    private Integer pageStatus;
 
-  public String getPageContent() {
-    return pageContent;
-  }
+    /**
+	* 
+	*/
+    private String pageContent;
 
-  public void setPageContent(String pageContent) {
-    this.pageContent = pageContent;
-  }
+    public Integer getPageId() {
+        return pageId;
+    }
 
-  public Date getPageCreateTime() {
-    return pageCreateTime;
-  }
+    public void setPageId(Integer pageId) {
+        this.pageId = pageId;
+    }
 
-  public void setPageCreateTime(Date pageCreateTime) {
-    this.pageCreateTime = pageCreateTime;
-  }
+    public String getPageKey() {
+        return pageKey;
+    }
 
-  public Date getPageUpdateTime() {
-    return pageUpdateTime;
-  }
+    public void setPageKey(String pageKey) {
+        this.pageKey = pageKey;
+    }
 
-  public void setPageUpdateTime(Date pageUpdateTime) {
-    this.pageUpdateTime = pageUpdateTime;
-  }
+    public String getPageTitle() {
+        return pageTitle;
+    }
 
-  public Integer getPageViewCount() {
-    return pageViewCount;
-  }
+    public void setPageTitle(String pageTitle) {
+        this.pageTitle = pageTitle;
+    }
 
-  public void setPageViewCount(Integer pageViewCount) {
-    this.pageViewCount = pageViewCount;
-  }
+    public Date getPageCreateTime() {
+        return pageCreateTime;
+    }
 
-  public Integer getPageCommentCount() {
-    return pageCommentCount;
-  }
+    public void setPageCreateTime(Date pageCreateTime) {
+        this.pageCreateTime = pageCreateTime;
+    }
 
-  public void setPageCommentCount(Integer pageCommentCount) {
-    this.pageCommentCount = pageCommentCount;
-  }
+    public Date getPageUpdateTime() {
+        return pageUpdateTime;
+    }
 
-  public Integer getPageStatus() {
-    return pageStatus;
-  }
+    public void setPageUpdateTime(Date pageUpdateTime) {
+        this.pageUpdateTime = pageUpdateTime;
+    }
 
-  public void setPageStatus(Integer pageStatus) {
-    this.pageStatus = pageStatus;
-  }
+    public Integer getPageViewCount() {
+        return pageViewCount;
+    }
+
+    public void setPageViewCount(Integer pageViewCount) {
+        this.pageViewCount = pageViewCount;
+    }
+
+    public Integer getPageCommentCount() {
+        return pageCommentCount;
+    }
+
+    public void setPageCommentCount(Integer pageCommentCount) {
+        this.pageCommentCount = pageCommentCount;
+    }
+
+    public Integer getPageStatus() {
+        return pageStatus;
+    }
+
+    public void setPageStatus(Integer pageStatus) {
+        this.pageStatus = pageStatus;
+    }
+
+    public String getPageContent() {
+        return pageContent;
+    }
+
+    public void setPageContent(String pageContent) {
+        this.pageContent = pageContent;
+    }
 }

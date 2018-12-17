@@ -48,5 +48,8 @@
     <dubbo:reference interface="com.lk.service.NoticeService" id="noticeService"/>
     <dubbo:reference interface="com.lk.service.LinkService" id="linkService"/>
     <dubbo:reference interface="com.lk.service.CommentService" id="commentService"/>
+    <dubbo:reference interface="com.lk.service.PageService" id="pageService"/>
+    <dubbo:reference interface="com.lk.service.OptionService" id="optionService"/>
+    <dubbo:reference interface="com.lk.service.MenuService" id="menuService"/>
 
 </beans>

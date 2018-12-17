@@ -113,84 +113,7 @@
                     </article>
                 </c:forEach>
             </main>
-
-            <%--<c:if test="${articleListVoList[0].page.totalPageCount>1}">
-            <nav class="navigation pagination" role="navigation">
-                <div class="nav-links">
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.totalPageCount <= 3 }">
-                            <c:set var="begin" value="1"/>
-                            <c:set var="end" value="${articleListVoList[0].page.totalPageCount }"/>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="begin" value="${articleListVoList[0].page.pageNow-1 }"/>
-                            <c:set var="end" value="${articleListVoList[0].page.pageNow + 2}"/>
-                            <c:if test="${begin < 2 }">
-                                <c:set var="begin" value="1"/>
-                                <c:set var="end" value="3"/>
-                            </c:if>
-                            <c:if test="${end > articleListVoList[0].page.totalPageCount }">
-                                <c:set var="begin" value="${articleListVoList[0].page.totalPageCount-2 }"/>
-                                <c:set var="end" value="${articleListVoList[0].page.totalPageCount }"/>
-                            </c:if>
-                        </c:otherwise>
-                    </c:choose>
-                        &lt;%&ndash;上一页 &ndash;%&gt;
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.pageNow eq 1 }">
-                            &lt;%&ndash;当前页为第一页，隐藏上一页按钮&ndash;%&gt;
-                        </c:when>
-                        <c:otherwise>
-                            <a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow-1}" >
-                                <span class="fa fa-angle-left"></span>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-                        &lt;%&ndash;显示第一页的页码&ndash;%&gt;
-                    <c:if test="${begin >= 2 }">
-                        <a class="page-numbers" href="/p/1">1</a>
-                    </c:if>
-                        &lt;%&ndash;显示点点点&ndash;%&gt;
-                    <c:if test="${begin  > 2 }">
-                        <span class="page-numbers dots">…</span>
-                    </c:if>
-                        &lt;%&ndash;打印 页码&ndash;%&gt;
-                    <c:forEach begin="${begin }" end="${end }" var="i">
-                        <c:choose>
-                            <c:when test="${i eq articleListVoList[0].page.pageNow }">
-                                <a class="page-numbers current" >${i}</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a  class="page-numbers" href="/p/${i}">${i }</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-                        &lt;%&ndash; 显示点点点 &ndash;%&gt;
-                    <c:if test="${end < articleListVoList[0].page.totalPageCount-1 }">
-                        <span class="page-numbers dots">…</span>
-                    </c:if>
-                        &lt;%&ndash; 显示最后一页的数字 &ndash;%&gt;
-                    <c:if test="${end < articleListVoList[0].page.totalPageCount }">
-                        <a href="/p/${articleListVoList[0].page.totalPageCount}">
-                                ${articleListVoList[0].page.totalPageCount}
-                        </a>
-                    </c:if>
-                        &lt;%&ndash;下一页 &ndash;%&gt;
-                    <c:choose>
-                        <c:when test="${articleListVoList[0].page.pageNow eq articleListVoList[0].page.totalPageCount }">
-                            &lt;%&ndash;到了尾页隐藏，下一页按钮&ndash;%&gt;
-                        </c:when>
-                        <c:otherwise>
-                            <a class="page-numbers" href="/p/${articleListVoList[0].page.pageNow+1}">
-                                <span class="fa fa-angle-right"></span>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-
-                </div>
-            </nav>
-                &lt;%&ndash;分页 end&ndash;%&gt;
-            </c:if>--%>
+            <div id="indexArticle"></div>
         </div>
     </rapid:override>
     <%--左侧区域 end--%>
@@ -219,5 +142,25 @@
         </div>
     </rapid:override>
     <%--友情链接 end--%>
+<rapid:override name="footer-script">
+    <script>
+        layui.use("laypage", function () {
+            var laypage = layui.laypage;
+            laypage.render({
+                elem: 'indexArticle',
+                count:${pageinfopass.total},
+                curr:${pageinfopass.pageNum},
+                limit:${pageinfopass.pageSize},
+                limits: [5, 10, 20, 30, 40, 50],
+                layout: ['prev', 'page', 'limit', 'next'],
+                jump: function (obj, first) {
+                    if (!first) {
+                        location.href = "/admin/comment?pageNum=" + obj.curr + "&pageSize=" + obj.limit;
+                    }
+                }
+            });
+        });
+    </script>
+</rapid:override>
 
 <%@ include file="Public/framework.jsp" %>

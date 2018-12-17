@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lk.mapper.CategoryMapper">
+    <cache></cache>
     <resultMap id="categoryResult" type="com.lk.pojo.Category">
         <id column="category_id" property="categoryId" jdbcType="INTEGER"></id>
         <result column="category_pid" property="categoryPid" jdbcType="INTEGER"></result>
@@ -74,7 +75,7 @@
 
 
     <!--插入新的类别-->
-    <insert id="insertCategory" parameterType="com.lk.pojo.Category">
+    <insert id="insertCategory" parameterType="com.lk.pojo.Category" flushCache="true">
         insert into category
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="categoryPid != null">
@@ -122,7 +123,7 @@
 
 
     <!--修改类别-->
-    <update id="updateCategory" parameterType="com.lk.pojo.Category">
+    <update id="updateCategory" parameterType="com.lk.pojo.Category" flushCache="true">
         update category
         <set>
             <if test="categoryPid != null">
@@ -151,7 +152,7 @@
 
 
     <!--根据类别id删除类别-->
-    <delete id="deleteCategory" parameterType="int">
+    <delete id="deleteCategory" parameterType="int" flushCache="true">
         delete from category
         where category_id=#{cid}
     </delete>

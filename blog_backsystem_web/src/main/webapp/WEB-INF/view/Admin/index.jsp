@@ -246,47 +246,47 @@
                                 <c:forEach items="${commentListVoList}" begin="0" end="4" step="1" var="c">
                                     <li class="comment   thread-even comment-item approved">
 
-                                        <img alt="" src="${c.commentCustom.commentAuthorAvatar}"
+                                        <img alt="" src="${c.user.userAvatar}"
                                              class="avatar avatar-50 photo" height="50" width="50">
                                         <div class="dashboard-comment-wrap has-row-actions">
                                             <p class="comment-meta">
                                                 由<cite class="comment-author">
-                                                <a target="_blank" href="${c.commentCustom.commentAuthorUrl}"
+                                                <a target="_blank" href="${c.user.userUrl}"
                                                    rel="external nofollow"
-                                                   class="url">${c.commentCustom.commentAuthorName}</a>
+                                                   class="url">${c.user.userName}</a>
                                             </cite>发表在《<a
-                                                    href="/article/${c.commentArticleId}">${c.articleTitle}</a>》
-                                                <c:if test="${c.commentCustom.commentStatus==0}">
+                                                    href="/article/${c.commentArticleId}">${c.article.articleTitle}</a>》
+                                                <c:if test="${c.commentStatus==0}">
                                                     <span class="approve">[待审]</span>
                                                 </c:if>
                                             </p>
 
-                                            <blockquote><p>${c.commentCustom.commentContent}</p></blockquote>
+                                            <blockquote><p>${c.commentContent}</p></blockquote>
                                             <p class="row-actions">
                                             <span class="">
                                             <c:choose>
-                                                <c:when test="${c.commentCustom.commentStatus==1}">
+                                                <c:when test="${c.commentStatus==1}">
                                                     <a href="javascript:void(0)" style="color: #FF5722;"
-                                                       onclick="hideComment(${c.commentCustom.commentId})">屏蔽</a>
+                                                       onclick="hideComment(${c.commentId})">屏蔽</a>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <a href="" style="color: #009688;"
-                                                       onclick="approveComment(${c.commentCustom.commentId})">批准</a>
+                                                       onclick="approveComment(${c.commentId})">批准</a>
                                                 </c:otherwise>
                                             </c:choose>
                                             </span> |
                                                 <span class="">
                                             <a data-comment-id="1268"
-                                               href="/admin/comment/reply/${c.commentCustom.commentId}">
+                                               href="/admin/comment/reply/${c.commentId}">
                                                 回复
                                             </a>
                                             </span>
                                                 <span class=""> |
-                                                <a href="/admin/comment/edit/${c.commentCustom.commentId}">编辑</a>
+                                                <a href="/admin/comment/edit/${c.commentId}">编辑</a>
                                             </span>
                                                 <span class=""> |
                                                 <a href="javascript:void(0)"
-                                                   onclick="deleteComment(${c.commentCustom.commentId})">删除</a>
+                                                   onclick="deleteComment(${c.commentId})">删除</a>
                                             </span>
                                             </p>
                                         </div>
@@ -295,18 +295,18 @@
                             </ul>
                             <ul class="subsubsub">
                                 <li class="all"><a
-                                        href="">全部<span
-                                        class="count">（<span class="all-count">${allCommentCount}</span>）</span></a> |
+                                        href="/admin/comment">全部<span
+                                        class="count">（<span class="all-count">${allcomments.size()}</span>）</span></a> |
                                 </li>
                                 <li class="moderated"><a
-                                        href="">待审<span
-                                        class="count">（<span class="pending-count">${hiddenCommentCount}</span>）</span></a>
+                                        href="/admin/comment#test=22">待审<span
+                                        class="count">（<span class="pending-count">${hiddencomments.total}</span>）</span></a>
                                     |
                                 </li>
                                 <li class="approved"><a
-                                        href="">已批准<span
+                                        href="/admin/comment">已批准<span
                                         class="count">（<span
-                                        class="approved-count">${approvedCommentCount}</span>）</span></a> |
+                                        class="approved-count">${passcomments.total}</span>）</span></a> |
                                 </li>
                             </ul>
                         </div>
@@ -339,7 +339,7 @@
                         </div>
 
                     </form>
-                    <div class="drafts"><p class="view-all"><a
+<%--                    <div class="drafts"><p class="view-all"><a
                             href="/admin/article"
                             aria-label="查看所有草稿">查看所有</a></p>
                         <h2 class="hide-if-no-js">草稿</h2>
@@ -348,14 +348,14 @@
                                 <c:if test="${a.articleCustom.articleStatus==0}">
                                     <li>
                                         <div class="draft-title"><a
-                                                href="/admin/article/edit/${a.articleCustom.articleId}">${a.articleCustom.articleTitle}</a>
-                                            <time ><fmt:formatDate value="${a.articleCustom.articlePostTime}" pattern="yyyy年MM月dd日"/></time>
+                                                href="/admin/article/edit/${a.article.articleId}">${a.article.articleTitle}</a>
+                                            <time ><fmt:formatDate value="${a.article.articlePostTime}" pattern="yyyy年MM月dd日"/></time>
                                         </div>
                                     </li>
                                 </c:if>
                             </c:forEach>
                         </ul>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 public class AdminCommentController {
@@ -25,14 +24,18 @@ public class AdminCommentController {
     * 获取全部评论列表
     * */
     @RequestMapping("/admin/comment")
-    public String toCommentPage(Model model, @RequestParam(value = "pageNum",defaultValue = "1")int pageNum,@RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
+    public String toCommentPage(Model model,@RequestParam(value = "pageNum",defaultValue = "1")int pageNum,
+                                      @RequestParam(value = "pageSize",defaultValue = "10")int pageSize,
+                                      @RequestParam(value = "npageNum",defaultValue = "1")int npageNum,
+                                      @RequestParam(value = "npageSize",defaultValue = "10")int npageSize,
+                                      @RequestParam(value = "test",defaultValue = "11")int test){
         PageInfo<CommentCustom> commentCustomsPass = commentService.getCommentCustomsPass(pageNum, pageSize);
-        PageInfo<CommentCustom> commentCustomsNopass = commentService.getCommentCustomsNopass(pageNum, pageSize);
+        PageInfo<CommentCustom> commentCustomsNopass = commentService.getCommentCustomsNopass(npageNum, npageSize);
         model.addAttribute("pageinfopass",commentCustomsPass);
         model.addAttribute("pageinfonopass",commentCustomsNopass);
+        model.addAttribute("test",test);
         return "Admin/Comment/index";
     }
-
     /*
     * 删除
     * */
@@ -73,7 +76,7 @@ public class AdminCommentController {
         String remoteAddr = request.getRemoteAddr();
         comment.setCommentIp(remoteAddr);
         commentService.replyComment(comment);
-        return "";
+        return "forward:/admin/comment";
     }
 
     /**

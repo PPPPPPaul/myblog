@@ -72,7 +72,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArticleCustomer> getRecentArticle() {
         try {
-            return articleMapper.selectCustomArticle();
+            return articleMapper.selectRentCustomArticle();
         }catch (Exception e){
             return null;
         }

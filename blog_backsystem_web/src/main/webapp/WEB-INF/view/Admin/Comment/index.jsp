@@ -25,12 +25,12 @@
               <a><cite>评论列表</cite></a>
         </span>
     </blockquote>
-    <div class="layui-tab layui-tab-card">
-        <ul class="layui-tab-title">
-            <li class="layui-this">全部评论(${pageinfopass.list.size()})</li>
-            <li>待审评论(${pageinfonopass.list.size()})</li>
+    <div class="layui-tab layui-tab-card" lay-filter="test">
+        <ul class="layui-tab-title" id="cardheader">
+            <li class="layui-this" lay-id="11">全部评论(${pageinfopass.total})</li>
+            <li lay-id="22">待审评论(${pageinfonopass.total})</li>
         </ul>
-        <div class="layui-tab-content" >
+        <div class="layui-tab-content">
             <div class="layui-tab-item layui-show" style="margin-bottom: -10px">
                 <table class="layui-table" lay-even lay-skin="nob">
                     <colgroup>
@@ -72,22 +72,24 @@
                                      <span class="">
                                            <c:choose>
                                                <c:when test="${c.commentStatus==0}">
-                                                   <a href="javascript:void(0)" style="color:#5FB878;!important;" onclick="approveComment(${c.commentId})">批准</a>
+                                                   <a href="javascript:void(0)" style="color:#5FB878;!important;"
+                                                      onclick="approveComment(${c.commentId})">批准</a>
                                                </c:when>
                                                <c:otherwise>
-                                                   <a href="javascript:void(0)" style="color:#FF5722;!important;" onclick="hideComment(${c.commentId})">屏蔽</a>
+                                                   <a href="javascript:void(0)" style="color:#FF5722;!important;"
+                                                      onclick="hideComment(${c.commentId})">屏蔽</a>
                                                </c:otherwise>
                                            </c:choose>
                                      </span> |
-                                     <span class="">
+                                    <span class="">
                                         <a href="/admin/comment/reply/${c.commentId}">
                                             回复
                                         </a>
                                      </span>
-                                     <span class=""> |
+                                    <span class=""> |
                                         <a href="/admin/comment/edit/${c.commentId}">编辑</a>
                                      </span>
-                                     <span class=""> |
+                                    <span class=""> |
                                         <a href="javascript:void(0)" onclick="deleteComment(${c.commentId})">删除</a>
                                      </span>
                                 </div>
@@ -108,87 +110,6 @@
                     </tbody>
 
                 </table>
-
-     <%--           <div id="nav" style="">
-                    <c:if test="${commentListVoList[0].page.totalPageCount >1}">
-                    &lt;%&ndash;分页 start&ndash;%&gt;
-                    <nav class="navigation pagination" role="navigation">
-                        <div class="nav-links">
-                            <c:choose>
-                                <c:when test="${commentListVoList[0].page.totalPageCount <= 3 }">
-                                    <c:set var="begin" value="1"/>
-                                    <c:set var="end" value="${commentListVoList[0].page.totalPageCount }"/>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:set var="begin" value="${commentListVoList[0].page.pageNow-1 }"/>
-                                    <c:set var="end" value="${commentListVoList[0].page.pageNow + 2}"/>
-                                    <c:if test="${begin < 2 }">
-                                        <c:set var="begin" value="1"/>
-                                        <c:set var="end" value="3"/>
-                                    </c:if>
-                                    <c:if test="${end > commentListVoList[0].page.totalPageCount }">
-                                        <c:set var="begin" value="${commentListVoList[0].page.totalPageCount-2 }"/>
-                                        <c:set var="end" value="${commentListVoList[0].page.totalPageCount }"/>
-                                    </c:if>
-                                </c:otherwise>
-                            </c:choose>
-                                &lt;%&ndash;上一页 &ndash;%&gt;
-                            <c:choose>
-                                <c:when test="${commentListVoList[0].page.pageNow eq 1 }">
-                                    &lt;%&ndash;当前页为第一页，隐藏上一页按钮&ndash;%&gt;
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="page-numbers" href="/admin/comment/p/${commentListVoList[0].page.pageNow-1}" >
-                                        <i class="layui-icon">&#xe603;</i>
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
-                                &lt;%&ndash;显示第一页的页码&ndash;%&gt;
-                            <c:if test="${begin >= 2 }">
-                                <a class="page-numbers" href="/admin/comment/p/1">1</a>
-                            </c:if>
-                                &lt;%&ndash;显示点点点&ndash;%&gt;
-                            <c:if test="${begin  > 2 }">
-                                <span class="page-numbers dots">…</span>
-                            </c:if>
-                                &lt;%&ndash;打印 页码&ndash;%&gt;
-                            <c:forEach begin="${begin }" end="${end }" var="i">
-                                <c:choose>
-                                    <c:when test="${i eq commentListVoList[0].page.pageNow }">
-                                        <a class="page-numbers current" >${i}</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <a  class="page-numbers" href="/admin/comment/p/${i}">${i}</a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                                &lt;%&ndash; 显示点点点 &ndash;%&gt;
-                            <c:if test="${end < commentListVoList[0].page.totalPageCount-1 }">
-                                <span class="page-numbers dots">…</span>
-                            </c:if>
-                                &lt;%&ndash; 显示最后一页的数字 &ndash;%&gt;
-                            <c:if test="${end < commentListVoList[0].page.totalPageCount }">
-                                <a href="/admin/comment/p/${commentListVoList[0].page.totalPageCount}">
-                                        ${commentListVoList[0].page.totalPageCount}
-                                </a>
-                            </c:if>
-                                &lt;%&ndash;下一页 &ndash;%&gt;
-                            <c:choose>
-                                <c:when test="${commentListVoList[0].page.pageNow eq commentListVoList[0].page.totalPageCount }">
-                                    &lt;%&ndash;到了尾页隐藏，下一页按钮&ndash;%&gt;
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="page-numbers" href="/admin/comment/p/${commentListVoList[0].page.pageNow+1}">
-                                        <i class="layui-icon">&#xe602;</i>
-                                    </a>
-                                </c:otherwise>
-                            </c:choose>
-
-                        </div>
-                    </nav>
-                    &lt;%&ndash;分页 end&ndash;%&gt;
-                    </c:if>
-                </div>--%>
                 <div id="passpage"></div>
             </div>
             <div class="layui-tab-item">
@@ -221,17 +142,19 @@
                             </td>
                             <td class="dashboard-comment-wrap">
                                 <c:if test="${c.commentPid!=0}">
-                                     <a href="${c.user.userUrl}">@ ${c.commentPname}</a></span>
+                                    <a href="${c.user.userUrl}">@ ${c.commentPname}</a></span>
                                 </c:if>
                                     ${c.commentContent}
                                 <div class="row-actions">
                                     <span class="">
                                         <c:choose>
                                             <c:when test="${c.commentStatus==0}">
-                                                <a href="javascript:void(0)" style="color:#5FB878;!important;" onclick="approveComment(${c.commentId})">批准</a>
+                                                <a href="javascript:void(0)" style="color:#5FB878;!important;"
+                                                   onclick="approveComment(${c.commentId})">批准</a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a href="javascript:void(0)" style="color:#FF5722;!important;" onclick="hideComment(${c.commentId})">屏蔽</a>
+                                                <a href="javascript:void(0)" style="color:#FF5722;!important;"
+                                                   onclick="hideComment(${c.commentId})">屏蔽</a>
                                             </c:otherwise>
                                         </c:choose>
                                     </span>
@@ -270,42 +193,49 @@
 </rapid:override>
 <rapid:override name="footer-script">
     <script>
-        layui.use("laypage",function(){
+        var lid=${test};
+        layui.use("element", function () {
+            //Hash地址的定位
+            var element = layui.element;
+            var layid = location.hash.replace(/^#test=/, '');
+            element.tabChange('test', layid);
+            element.on('tab(test)', function (elem) {
+                location.hash = 'test=' + $(this).attr('lay-id');
+                lid=$(this).attr('lay-id');
+            });
+        });
+    </script>
+    <script>
+        layui.use("laypage", function () {
             var laypage = layui.laypage;
+            var laypage1 = layui.laypage;
             laypage.render({
-                elem:'nopasspage',
-                count:${pageinfo.total},
-                curr:${pageinfo.pageNum},
-                limit:${pageinfo.pageSize},
-                limits:[5,10,20,30,40,50],
-                layout:['prev', 'page','limit','next'],
-                jump: function(obj, first){
-                    $('#pageNum').val(obj.curr);
-                    $('#pageSize').val(obj.limit);
-                    if(!first) {
-                        window.location.href("/admin/");
+                elem: 'passpage',
+                count:${pageinfopass.total},
+                curr:${pageinfopass.pageNum},
+                limit:${pageinfopass.pageSize},
+                limits: [5, 10, 20, 30, 40, 50],
+                layout: ['prev', 'page', 'limit', 'next'],
+                jump: function (obj, first) {
+                    if (!first) {
+                        location.href = "/admin/comment?pageNum=" + obj.curr + "&pageSize=" + obj.limit;
                     }
                 }
-            })
-        })
-        layui.use("laypage",function(){
-            var laypage = layui.laypage;
-            laypage.render({
-                elem:'passpage',
-                count:${pageinfo.total},
-                curr:${pageinfo.pageNum},
-                limit:${pageinfo.pageSize},
-                limits:[5,10,20,30,40,50],
-                layout:['prev', 'page','limit','next'],
-                jump: function(obj, first){
-                    $('#pageNum').val(obj.curr);
-                    $('#pageSize').val(obj.limit);
-                    if(!first) {
-                        window.location.href();
+            });
+            laypage1.render({
+                elem: 'nopasspage',
+                count:${pageinfonopass.total},
+                curr:${pageinfonopass.pageNum},
+                limit:${pageinfonopass.pageSize},
+                limits: [5, 10, 20, 30, 40, 50],
+                layout: ['prev', 'page', 'limit', 'next'],
+                jump: function (obj, first) {
+                    if (!first) {
+                        location.href = "/admin/comment?npageNum=" + obj.curr + "&npageSize=" + obj.limit + "&test=" + lid + "#test=" + lid;
                     }
                 }
-            })
-        })
+            });
+        });
     </script>
 </rapid:override>
 

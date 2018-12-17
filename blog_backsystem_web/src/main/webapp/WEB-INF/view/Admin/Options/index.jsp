@@ -159,8 +159,8 @@
                     });
                 },
                 done: function (res) {
-                    $("#optionAboutsiteAvatar").attr("value", res.data.src);
-                    if (res.code > 0) {
+                    $("#optionAboutsiteAvatar").attr("value", res.url);
+                    if (res.error == 1) {
                         return layer.msg('上传失败');
                     }
                 },

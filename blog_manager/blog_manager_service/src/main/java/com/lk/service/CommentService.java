@@ -10,7 +10,11 @@ import java.util.List;
 public interface CommentService {
     PageInfo<CommentCustom> getCommentCustomsPass(int pageNum, int pageSize);
 
-    PageInfo<CommentCustom> getCommentCustomsNopass(int oageNum,int pageSize);
+    PageInfo<CommentCustom> getCommentCustomsNopass(int pageNum,int pageSize);
+
+    List<Comment> getComment();
+
+    List<CommentCustom> getRentCommentCustoms();
 
     Comment getCommentById(int cid);
 

@@ -1,134 +1,187 @@
 package com.lk.pojo;
 
-
 import java.io.Serializable;
 
 public class Options implements Serializable {
+    /**
+	* 
+	*/
+    private Integer optionId;
 
-  private Integer optionId;
-  private String optionSiteTitle;
-  private String optionSiteDescrption;
-  private String optionMetaDescrption;
-  private String optionMetaKeyword;
-  private String optionAboutsiteAvatar;
-  private String optionAboutsiteTitle;
-  private String optionAboutsiteContent;
-  private String optionAboutsiteWechat;
-  private String optionAboutsiteQq;
-  private String optionAboutsiteGithub;
-  private String optionAboutsiteWeibo;
-  private String optionTongji;
-  private Integer optionStatus;
+    /**
+	* 
+	*/
+    private String optionSiteTitle;
 
-  public Integer getOptionId() {
-    return optionId;
-  }
+    /**
+	* 
+	*/
+    private String optionSiteDescrption;
 
-  public void setOptionId(Integer optionId) {
-    this.optionId = optionId;
-  }
+    /**
+	* 
+	*/
+    private String optionMetaDescrption;
 
-  public String getOptionSiteTitle() {
-    return optionSiteTitle;
-  }
+    /**
+	* 
+	*/
+    private String optionMetaKeyword;
 
-  public void setOptionSiteTitle(String optionSiteTitle) {
-    this.optionSiteTitle = optionSiteTitle;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteAvatar;
 
-  public String getOptionSiteDescrption() {
-    return optionSiteDescrption;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteTitle;
 
-  public void setOptionSiteDescrption(String optionSiteDescrption) {
-    this.optionSiteDescrption = optionSiteDescrption;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteContent;
 
-  public String getOptionMetaDescrption() {
-    return optionMetaDescrption;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteWechat;
 
-  public void setOptionMetaDescrption(String optionMetaDescrption) {
-    this.optionMetaDescrption = optionMetaDescrption;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteQq;
 
-  public String getOptionMetaKeyword() {
-    return optionMetaKeyword;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteGithub;
 
-  public void setOptionMetaKeyword(String optionMetaKeyword) {
-    this.optionMetaKeyword = optionMetaKeyword;
-  }
+    /**
+	* 
+	*/
+    private String optionAboutsiteWeibo;
 
-  public String getOptionAboutsiteAvatar() {
-    return optionAboutsiteAvatar;
-  }
+    /**
+	* 
+	*/
+    private String optionTongji;
 
-  public void setOptionAboutsiteAvatar(String optionAboutsiteAvatar) {
-    this.optionAboutsiteAvatar = optionAboutsiteAvatar;
-  }
+    /**
+	* 
+	*/
+    private Integer optionStatus;
 
-  public String getOptionAboutsiteTitle() {
-    return optionAboutsiteTitle;
-  }
+    public Integer getOptionId() {
+        return optionId;
+    }
 
-  public void setOptionAboutsiteTitle(String optionAboutsiteTitle) {
-    this.optionAboutsiteTitle = optionAboutsiteTitle;
-  }
+    public void setOptionId(Integer optionId) {
+        this.optionId = optionId;
+    }
 
-  public String getOptionAboutsiteContent() {
-    return optionAboutsiteContent;
-  }
+    public String getOptionSiteTitle() {
+        return optionSiteTitle;
+    }
 
-  public void setOptionAboutsiteContent(String optionAboutsiteContent) {
-    this.optionAboutsiteContent = optionAboutsiteContent;
-  }
+    public void setOptionSiteTitle(String optionSiteTitle) {
+        this.optionSiteTitle = optionSiteTitle;
+    }
 
-  public String getOptionAboutsiteWechat() {
-    return optionAboutsiteWechat;
-  }
+    public String getOptionSiteDescrption() {
+        return optionSiteDescrption;
+    }
 
-  public void setOptionAboutsiteWechat(String optionAboutsiteWechat) {
-    this.optionAboutsiteWechat = optionAboutsiteWechat;
-  }
+    public void setOptionSiteDescrption(String optionSiteDescrption) {
+        this.optionSiteDescrption = optionSiteDescrption;
+    }
 
-  public String getOptionAboutsiteQq() {
-    return optionAboutsiteQq;
-  }
+    public String getOptionMetaDescrption() {
+        return optionMetaDescrption;
+    }
 
-  public void setOptionAboutsiteQq(String optionAboutsiteQq) {
-    this.optionAboutsiteQq = optionAboutsiteQq;
-  }
+    public void setOptionMetaDescrption(String optionMetaDescrption) {
+        this.optionMetaDescrption = optionMetaDescrption;
+    }
 
-  public String getOptionAboutsiteGithub() {
-    return optionAboutsiteGithub;
-  }
+    public String getOptionMetaKeyword() {
+        return optionMetaKeyword;
+    }
 
-  public void setOptionAboutsiteGithub(String optionAboutsiteGithub) {
-    this.optionAboutsiteGithub = optionAboutsiteGithub;
-  }
+    public void setOptionMetaKeyword(String optionMetaKeyword) {
+        this.optionMetaKeyword = optionMetaKeyword;
+    }
 
-  public String getOptionAboutsiteWeibo() {
-    return optionAboutsiteWeibo;
-  }
+    public String getOptionAboutsiteAvatar() {
+        return optionAboutsiteAvatar;
+    }
 
-  public void setOptionAboutsiteWeibo(String optionAboutsiteWeibo) {
-    this.optionAboutsiteWeibo = optionAboutsiteWeibo;
-  }
+    public void setOptionAboutsiteAvatar(String optionAboutsiteAvatar) {
+        this.optionAboutsiteAvatar = optionAboutsiteAvatar;
+    }
 
-  public String getOptionTongji() {
-    return optionTongji;
-  }
+    public String getOptionAboutsiteTitle() {
+        return optionAboutsiteTitle;
+    }
 
-  public void setOptionTongji(String optionTongji) {
-    this.optionTongji = optionTongji;
-  }
+    public void setOptionAboutsiteTitle(String optionAboutsiteTitle) {
+        this.optionAboutsiteTitle = optionAboutsiteTitle;
+    }
 
-  public Integer getOptionStatus() {
-    return optionStatus;
-  }
+    public String getOptionAboutsiteContent() {
+        return optionAboutsiteContent;
+    }
 
-  public void setOptionStatus(Integer optionStatus) {
-    this.optionStatus = optionStatus;
-  }
+    public void setOptionAboutsiteContent(String optionAboutsiteContent) {
+        this.optionAboutsiteContent = optionAboutsiteContent;
+    }
+
+    public String getOptionAboutsiteWechat() {
+        return optionAboutsiteWechat;
+    }
+
+    public void setOptionAboutsiteWechat(String optionAboutsiteWechat) {
+        this.optionAboutsiteWechat = optionAboutsiteWechat;
+    }
+
+    public String getOptionAboutsiteQq() {
+        return optionAboutsiteQq;
+    }
+
+    public void setOptionAboutsiteQq(String optionAboutsiteQq) {
+        this.optionAboutsiteQq = optionAboutsiteQq;
+    }
+
+    public String getOptionAboutsiteGithub() {
+        return optionAboutsiteGithub;
+    }
+
+    public void setOptionAboutsiteGithub(String optionAboutsiteGithub) {
+        this.optionAboutsiteGithub = optionAboutsiteGithub;
+    }
+
+    public String getOptionAboutsiteWeibo() {
+        return optionAboutsiteWeibo;
+    }
+
+    public void setOptionAboutsiteWeibo(String optionAboutsiteWeibo) {
+        this.optionAboutsiteWeibo = optionAboutsiteWeibo;
+    }
+
+    public String getOptionTongji() {
+        return optionTongji;
+    }
+
+    public void setOptionTongji(String optionTongji) {
+        this.optionTongji = optionTongji;
+    }
+
+    public Integer getOptionStatus() {
+        return optionStatus;
+    }
+
+    public void setOptionStatus(Integer optionStatus) {
+        this.optionStatus = optionStatus;
+    }
 }

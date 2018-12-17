@@ -19,6 +19,10 @@ public interface ArticleMapper {
      */
     ArticleCustomer selectArticleById(int aid);
 
+
+
+    List<ArticleCustomer> selectRentCustomArticle();
+
     /**
      * 批量删除文章
      * @param ids

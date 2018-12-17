@@ -1,71 +1,96 @@
 package com.lk.pojo;
 
-
 import java.io.Serializable;
 
 public class Menu implements Serializable {
+    /**
+	* 
+	*/
+    private Integer menuId;
 
-  private Integer menuId;
-  private String menuName;
-  private String menuUrl;
-  private Integer menuLevel;
-  private String menuIcon;
-  private Integer menuOrder;
-  private Integer menuStatus;
+    /**
+	* 
+	*/
+    private String menuName;
 
-  public Integer getMenuId() {
-    return menuId;
-  }
+    /**
+	* 
+	*/
+    private String menuUrl;
 
-  public void setMenuId(Integer menuId) {
-    this.menuId = menuId;
-  }
+    /**
+	* 
+	*/
+    private Integer menuLevel;
 
-  public String getMenuName() {
-    return menuName;
-  }
+    /**
+	* 
+	*/
+    private String menuIcon;
 
-  public void setMenuName(String menuName) {
-    this.menuName = menuName;
-  }
+    /**
+	* 
+	*/
+    private Integer menuOrder;
 
-  public String getMenuUrl() {
-    return menuUrl;
-  }
+    /**
+	* 
+	*/
+    private Integer menuStatus;
 
-  public void setMenuUrl(String menuUrl) {
-    this.menuUrl = menuUrl;
-  }
+    public Integer getMenuId() {
+        return menuId;
+    }
 
-  public Integer getMenuLevel() {
-    return menuLevel;
-  }
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
+    }
 
-  public void setMenuLevel(Integer menuLevel) {
-    this.menuLevel = menuLevel;
-  }
+    public String getMenuName() {
+        return menuName;
+    }
 
-  public String getMenuIcon() {
-    return menuIcon;
-  }
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
 
-  public void setMenuIcon(String menuIcon) {
-    this.menuIcon = menuIcon;
-  }
+    public String getMenuUrl() {
+        return menuUrl;
+    }
 
-  public Integer getMenuOrder() {
-    return menuOrder;
-  }
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
+    }
 
-  public void setMenuOrder(Integer menuOrder) {
-    this.menuOrder = menuOrder;
-  }
+    public Integer getMenuLevel() {
+        return menuLevel;
+    }
 
-  public Integer getMenuStatus() {
-    return menuStatus;
-  }
+    public void setMenuLevel(Integer menuLevel) {
+        this.menuLevel = menuLevel;
+    }
 
-  public void setMenuStatus(Integer menuStatus) {
-    this.menuStatus = menuStatus;
-  }
+    public String getMenuIcon() {
+        return menuIcon;
+    }
+
+    public void setMenuIcon(String menuIcon) {
+        this.menuIcon = menuIcon;
+    }
+
+    public Integer getMenuOrder() {
+        return menuOrder;
+    }
+
+    public void setMenuOrder(Integer menuOrder) {
+        this.menuOrder = menuOrder;
+    }
+
+    public Integer getMenuStatus() {
+        return menuStatus;
+    }
+
+    public void setMenuStatus(Integer menuStatus) {
+        this.menuStatus = menuStatus;
+    }
 }
