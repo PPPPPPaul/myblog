@@ -4,9 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.lk.pojo.Link;
 import com.lk.pojo.Notice;
 import com.lk.pojo.custom.ArticleCustomer;
-import com.lk.service.ArticleService;
-import com.lk.service.LinkService;
-import com.lk.service.NoticeService;
+import com.lk.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +18,10 @@ public class HomeIndexController {
     @Autowired
     private ArticleService articleService;
     @Autowired
+    private TagService tagService;
+    @Autowired
+    private CommentService commentService;
+    @Autowired
     private NoticeService noticeService;
     @Autowired
     private LinkService linkService;
@@ -31,6 +33,8 @@ public class HomeIndexController {
         List<Link> linksList = linkService.getLinksList();
         model.addAttribute("noticeCustomList",notices);
         model.addAttribute("linkCustomList",linksList);
+        model.addAttribute("tagList",tagService.getTagCustom());
+        model.addAttribute("recentCommentList",commentService.getRentCommentCustoms());
         model.addAttribute("pi",articles);
         return "/Home/index";
     }

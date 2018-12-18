@@ -28,16 +28,16 @@
         <div id="primary" class="content-area">
 
             <main id="main" class="site-main" role="main">
-                <c:forEach items="${articleListVoList}" var="a">
+                <c:forEach items="${pi.list}" var="a">
 
                     <article  class="post type-post">
 
                         <figure class="thumbnail">
-                            <a href="/article/${a.articleCustom.articleId}">
+                            <a href="/article/${a.articleId}">
                                 <img width="280" height="210"
-                                     src="/img/thumbnail/random/img_${a.articleCustom.articleId%400}.jpg"
+                                     src="/img/thumbnail/random/img_${a.articleId%400}.jpg"
                                      class="attachment-content size-content wp-post-image"
-                                     alt="${a.articleCustom.articleTitle}">
+                                     alt="${a.articleTitle}">
                             </a>
                             <span class="cat">
                                 <a href="/category/${a.categoryCustomList[a.categoryCustomList.size()-1].categoryId}">
@@ -48,27 +48,27 @@
 
                         <header class="entry-header">
                             <h2 class="entry-title">
-                                <a href="/article/${a.articleCustom.articleId}"
+                                <a href="/article/${a.articleId}"
                                    rel="bookmark">
-                                        ${a.articleCustom.articleTitle}
+                                        ${a.articleTitle}
                                 </a>
                             </h2>
                         </header>
 
                         <div class="entry-content">
                             <div class="archive-content">
-                                <lyz:htmlFilter>${a.articleCustom.articleContent}</lyz:htmlFilter>......
+                                <lyz:htmlFilter>${a.articleContent}</lyz:htmlFilter>......
                             </div>
                             <span class="title-l"></span>
                             <span class="new-icon">
                                     <c:choose>
-                                        <c:when test="${a.articleCustom.articleStatus==2}">
+                                        <c:when test="${a.articleStatus==2}">
                                             <i class="fa fa-bookmark-o"></i>
                                         </c:when>
                                         <c:otherwise>
                                             <jsp:useBean id="nowDate" class="java.util.Date"/>
                                             <c:set var="interval"
-                                                   value="${nowDate.time - a.articleCustom.articlePostTime.time}"/><%--时间差毫秒数--%>
+                                                   value="${nowDate.time - a.articlePostTime.time}"/><%--时间差毫秒数--%>
                                             <fmt:formatNumber value="${interval/1000/60/60/24}" pattern="#0"
                                                               var="days"/>
                                             <c:if test="${days <= 7}">NEW</c:if>
@@ -79,22 +79,22 @@
                                 </span>
                             <span class="entry-meta">
                                     <span class="date">
-                                        <fmt:formatDate value="${a.articleCustom.articlePostTime}" pattern="yyyy年MM月dd日"/>
+                                        <fmt:formatDate value="${a.articlePostTime}" pattern="yyyy年MM月dd日"/>
                                     &nbsp;&nbsp;
                                     </span>
                                     <span class="views">
                                         <i class="fa fa-eye"></i>
-                                            ${a.articleCustom.articleViewCount} views
+                                            ${a.articleViewCount} views
                                     </span>
                                     <span class="comment">&nbsp;&nbsp;
-                                        <a href="/article/${a.articleCustom.articleId}#comments" rel="external nofollow">
+                                        <a href="/article/${a.articleId}#comments" rel="external nofollow">
                                           <i class="fa fa-comment-o"></i>
                                             <c:choose>
-                                                <c:when test="${a.articleCustom.articleCommentCount==0}">
+                                                <c:when test="${a.articleCommentCount==0}">
                                                     发表评论
                                                 </c:when>
                                                 <c:otherwise>
-                                                    ${a.articleCustom.articleCommentCount}
+                                                    ${a.articleCommentCount}
                                                 </c:otherwise>
                                             </c:choose>
 
@@ -105,7 +105,7 @@
                         </div><!-- .entry-content -->
 
                         <span class="entry-more">
-                                <a href="/article/${a.articleCustom.articleId}"
+                                <a href="/article/${a.articleId}"
                                    rel="bookmark">
                                     阅读全文
                                 </a>
@@ -155,7 +155,7 @@
                 layout: ['prev', 'page', 'limit', 'next'],
                 jump: function (obj, first) {
                     if (!first) {
-                        location.href = "/admin/comment?pageNum=" + obj.curr + "&pageSize=" + obj.limit;
+                        location.href = "/?pageNum=" + obj.curr + "&pageSize=" + obj.limit;
                     }
                 }
             });
